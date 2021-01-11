@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingClass">
+
+    <com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:tag="@string/tag_menu"
+        android:id="@+id/duoMenu"
+        >
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="wrap_content"
+               android:layout_alignParentTop="true"
+
+                android:layout_alignParentStart="true"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/closeImg"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="start|center"
+                        android:contentDescription="@null"
+                        android:layout_marginTop="20dp"
+                        android:gravity="start|center"
+                        android:src="@drawable/close_white_icon" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="60dp"
+                        android:layout_height="wrap_content">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/venuesImg"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/user_dummy_profile"
+                            app:civ_border_width=".1dp"
+                            app:civ_border_color="@android:color/transparent"/>
+                        <TextView
+                            android:id="@+id/nameTxt"
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="Dylan Meringue"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/emailTxt"
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="dylanmeringue@gmail.com"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                    
+
+                    <LinearLayout
+
+                        android:id="@+id/homeLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="50dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/home_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:text="@string/home"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/doctorLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/doctors_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:text="@string/doctors"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/appointmentLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/appointments_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/appointments"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:id="@+id/profileLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/profile_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="@string/profile"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/settingLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/settings_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:text="@string/settings"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/notificationsLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_15dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/notification_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:text="@string/notifications"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/logoutLinLay"
+                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/margin_25dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/margin_25dp"
+                            android:layout_height="@dimen/margin_25dp"
+                            android:layout_gravity="start|center"
+                            android:contentDescription="@null"
+                            android:gravity="start|center"
+                            android:src="@drawable/logout_white_icon" />
+
+                        <TextView
+                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|center"
+                            android:layout_marginStart="8dp"
+                            android:gravity="start|center"
+                            android:text="@string/logout"
+                            android:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </androidx.core.widget.NestedScrollView>
+
+
+
+        </RelativeLayout>
+
+    </com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:tag="@string/tag_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+
+
+
+
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:padding="?attr/listPreferredItemPaddingRight"/>
+    </LinearLayout>
+
+</com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout>
+
+
+
+
+
+

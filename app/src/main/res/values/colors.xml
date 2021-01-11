@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#212741</color>
+    <color name="colorPrimaryDark">#C2C1C3</color>
+    <color name="colorAccent">#12A0D0</color>
+
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fb_Image_shadow">#374F8B</color>
+    <color name="dialog_msg_text_color">#4A4A4A</color>
+
+
+
+    <color name="color_212741">#212741</color>
+    <color name="color_FF5119">#FF5119</color>
+    <color name="color_FC2727">#FC2727</color>
+    <color name="color_475A96">#475A96</color>
+
+    <color name="color_6F8BA4">#6F8BA4</color>
+    <color name="color_DCDBFF">#DCDBFF</color>
+    <color name="color_504DE5">#504DE5</color>
+
+
+
+
+
+
+
+</resources>

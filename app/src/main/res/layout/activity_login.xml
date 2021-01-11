@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginActivity"
+            type="com.numeroeins.arthros.patient.activity.LoginActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_212741"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
+            android:text="@string/log_in"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/custom_top_curve_bg"
+            android:padding="30dp">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                        android:contentDescription="@null"
+                         android:src="@drawable/arthos_splash_logo"   />
+
+                    <EditText
+                        android:id="@+id/emailEdt"
+                        android:layout_marginTop="30dp"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_gravity="start|center"
+                        android:background="@drawable/custom_edit_box"
+                        android:gravity="start|center"
+                        android:hint="@string/email"
+                        android:importantForAutofill="no"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:textColor="@color/color_6F8BA4"
+                        android:textColorHint="@color/color_6F8BA4"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="@dimen/margin_16dp"
+                        tools:ignore="LabelFor,SpUsage" />
+
+                    <EditText
+                        android:id="@+id/passwordEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_gravity="start|center"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/custom_edit_box"
+                        android:gravity="start|center"
+                        android:hint="@string/password"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:textColor="@color/color_6F8BA4"
+                        android:textColorHint="@color/color_6F8BA4"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="@dimen/margin_16dp"
+                        tools:ignore="LabelFor,SpUsage" />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp">
+
+                        <CheckBox
+                            android:id="@+id/loginCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@string/remember_me"
+                            android:visibility="gone"
+                            android:textColor="@color/color_504DE5"
+                            android:textSize="@dimen/text_size_12dp" />
+
+                        <TextView
+                            android:id="@+id/forgotPassword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/forgot_password"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/margin_12dp"
+                            tools:ignore="AllCaps,SpUsage" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/loginTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_45dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/custom_red_button"
+                        android:gravity="center"
+                        android:text="@string/sign_in"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/margin_16dp"
+                        tools:ignore="AllCaps,SpUsage" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginVertical="15dp"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/new_to_this_experience"
+                            android:textColor="@color/color_6F8BA4"
+                            android:textColorHint="@color/color_6F8BA4"
+                            android:textSize="@dimen/margin_16dp"
+                            tools:ignore="AllCaps,SpUsage" />
+
+                        <TextView
+                            android:id="@+id/registerTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="10dp"
+                            android:text="@string/sign_up"
+                            android:textColor="@color/color_FF5119"
+                            android:textColorHint="@color/color_FF5119"
+                            android:textSize="@dimen/margin_16dp"
+                            tools:ignore="AllCaps,SpUsage" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/or_with"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="@dimen/margin_16dp"
+                        tools:ignore="AllCaps,SpUsage" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_marginTop="25dp"
+                   android:layout_height="@dimen/height_45dp">
+
+                   <TextView
+                       android:id="@+id/facebookTxt"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/height_45dp"
+                       android:layout_gravity="center"
+                        android:background="@drawable/custom_facebook_btn"
+                       android:gravity="center"
+                       android:layout_marginEnd="10dp"
+                       android:layout_weight="1"
+                       android:text="@string/facebook"
+                       android:textColor="@color/white"
+                       android:textSize="@dimen/margin_16dp"
+                       tools:ignore="AllCaps,SpUsage" />
+
+                   <TextView
+                       android:id="@+id/googleTxt"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/height_45dp"
+                       android:layout_gravity="center"
+                       android:background="@drawable/custom_google_btn"
+                       android:gravity="center"
+                       android:layout_weight="1"
+                       android:layout_marginStart="10dp"
+                       android:text="@string/google"
+                       android:textColor="@color/white"
+                       android:textSize="@dimen/margin_16dp"
+                       tools:ignore="AllCaps,SpUsage" />
+
+               </LinearLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>
