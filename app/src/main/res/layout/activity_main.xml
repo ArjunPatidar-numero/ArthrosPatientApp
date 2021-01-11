@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer"
@@ -9,48 +8,47 @@
     tools:ignore="MissingClass">
 
     <com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView
+        android:id="@+id/duoMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/colorPrimary"
-        android:tag="@string/tag_menu"
-        android:id="@+id/duoMenu"
-        >
-        
+        android:orientation="vertical"
+        android:tag="@string/tag_menu">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="wrap_content"
-               android:layout_alignParentTop="true"
+                android:layout_height="wrap_content"
 
                 android:layout_alignParentStart="true"
-                android:layout_height="wrap_content">
+                android:layout_alignParentTop="true">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/closeImg"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_gravity="start|center"
-                        android:contentDescription="@null"
                         android:layout_marginTop="20dp"
+                        android:contentDescription="@null"
                         android:gravity="start|center"
                         android:src="@drawable/close_white_icon" />
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="60dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="vertical">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/venuesImg"
@@ -58,44 +56,45 @@
                             android:layout_height="80dp"
                             android:layout_gravity="center"
                             android:src="@drawable/user_dummy_profile"
-                            app:civ_border_width=".1dp"
-                            app:civ_border_color="@android:color/transparent"/>
+                            app:civ_border_color="@android:color/transparent"
+                            app:civ_border_width=".1dp" />
+
                         <TextView
                             android:id="@+id/nameTxt"
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:gravity="center"
                             android:layout_marginTop="10dp"
-                            android:text="Dylan Meringue"
                             android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Dylan Meringue"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="18sp" />
 
 
                         <TextView
                             android:id="@+id/emailTxt"
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:gravity="center"
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
                             android:text="dylanmeringue@gmail.com"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>
-                    
+
 
                     <LinearLayout
 
                         android:id="@+id/homeLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -106,27 +105,26 @@
                             android:src="@drawable/home_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="start|center"
                             android:text="@string/home"
-                            android:fontFamily="@font/poppins_regular"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
                     </LinearLayout>
 
 
-
                     <LinearLayout
                         android:id="@+id/doctorLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_15dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -137,14 +135,14 @@
                             android:src="@drawable/doctors_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="start|center"
                             android:text="@string/doctors"
-                            android:fontFamily="@font/poppins_regular"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -154,9 +152,9 @@
                     <LinearLayout
                         android:id="@+id/appointmentLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_15dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -167,14 +165,14 @@
                             android:src="@drawable/appointments_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
-                            android:gravity="start|center"
                             android:fontFamily="@font/poppins_regular"
+                            android:gravity="start|center"
                             android:text="@string/appointments"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -184,9 +182,9 @@
 
                         android:id="@+id/profileLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_15dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -197,14 +195,14 @@
                             android:src="@drawable/profile_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
-                            android:gravity="start|center"
                             android:fontFamily="@font/poppins_regular"
+                            android:gravity="start|center"
                             android:text="@string/profile"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -214,9 +212,9 @@
                     <LinearLayout
                         android:id="@+id/settingLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_15dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -227,14 +225,14 @@
                             android:src="@drawable/settings_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="start|center"
                             android:text="@string/settings"
-                            android:fontFamily="@font/poppins_regular"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -244,9 +242,9 @@
                     <LinearLayout
                         android:id="@+id/notificationsLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_15dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -257,23 +255,24 @@
                             android:src="@drawable/notification_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
                             android:gravity="start|center"
                             android:text="@string/notifications"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/logoutLinLay"
                         android:layout_width="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_25dp"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="@dimen/margin_25dp"
@@ -284,14 +283,14 @@
                             android:src="@drawable/logout_white_icon" />
 
                         <TextView
-                            android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_regular"
                             android:gravity="start|center"
                             android:text="@string/logout"
-                            android:fontFamily="@font/poppins_regular"
+                            android:textAllCaps="true"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
 
@@ -299,9 +298,7 @@
                 </LinearLayout>
 
 
-
             </androidx.core.widget.NestedScrollView>
-
 
 
         </RelativeLayout>
@@ -315,25 +312,137 @@
         android:orientation="vertical"
         android:tag="@string/tag_content">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/colorPrimary"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-
-
-
-
-
-        <FrameLayout
-            android:id="@+id/container"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:padding="?attr/listPreferredItemPaddingRight"/>
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:padding="?attr/listPreferredItemPaddingRight" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/homeTabLinLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/homeTabImg"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/home_white_icon"
+                        app:tint="@color/colorPrimary" />
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/doctorTabLinLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/doctorTabImg"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+
+                        app:tint="@color/colorPrimary"
+                        android:src="@drawable/doctors_white_icon"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/appointmentsTabLinLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/appointmentsTabImg"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+
+                        app:tint="@color/colorPrimary"
+                        android:src="@drawable/appointments_white_icon"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/profileTabLinLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/profileTabImg"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        app:tint="@color/colorPrimary"
+                        android:src="@drawable/profile_white_icon"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 
 </com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout>

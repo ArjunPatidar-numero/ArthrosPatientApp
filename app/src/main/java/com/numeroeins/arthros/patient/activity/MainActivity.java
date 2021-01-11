@@ -11,9 +11,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.numeroeins.arthros.patient.R;
+import com.numeroeins.arthros.patient.fragment.AppointmentFragment;
+import com.numeroeins.arthros.patient.fragment.DoctorFragment;
+import com.numeroeins.arthros.patient.fragment.HomeFragment;
+import com.numeroeins.arthros.patient.fragment.ProfileFragment;
+import com.numeroeins.arthros.patient.utility.Constants;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView;
 import com.numeroeins.arthros.patient.utility.customslider.widgets.DuoDrawerToggle;
@@ -46,7 +52,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         // Handle drawer actions
         handleDrawer();
         // Show main fragment in container
-        goToFragment(new MainFragment(), false);
+        changeTab(1);
         // mMenuAdapter.setViewSelected(0, true);
         setTitle(mTitles.get(0));
     }
@@ -84,7 +90,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         Toast.makeText(this, "onHeaderClicked", Toast.LENGTH_SHORT).show();
     }
 
-    private void goToFragment(Fragment fragment, boolean addToBackStack) {
+  /*  private void goToFragment(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (addToBackStack) {
@@ -92,7 +98,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         }
 
         transaction.add(R.id.container, fragment).commit();
-    }
+    }*/
 
     @Override
     public void onOptionClicked(int position, Object objectClicked) {
@@ -103,14 +109,44 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         //   mMenuAdapter.setViewSelected(position, true);
 
         // Navigate to the right fragment
-        switch (position) {
+       /* switch (position) {
             default:
                 goToFragment(new MainFragment(), false);
                 break;
-        }
+        }*/
 
         // Close the drawer
         mViewHolder.mDuoDrawerLayout.closeDrawer();
+    }
+
+
+
+    public void changeTab(int pos){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment fragment;
+        switch (pos){
+            case 1:
+                fragment = new HomeFragment();
+                fragmentTransaction.replace(R.id.container, fragment, "HomeFragment");
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+            case 2:
+                fragment = new DoctorFragment();
+                fragmentTransaction.replace(R.id.container, fragment, "DoctorFragment");
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+            case 3:
+                fragment = new AppointmentFragment();
+                fragmentTransaction.replace(R.id.container, fragment, "AppointmentFragment");
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+            case 4:
+                fragment = new ProfileFragment();
+                fragmentTransaction.replace(R.id.container, fragment, "ProfileFragment");
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+        }
     }
 
   /*  @SuppressLint("NonConstantResourceId")
@@ -150,7 +186,8 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         ImageView closeImg;
 
         LinearLayout homeLinLay,doctorLinLay,appointmentLinLay,profileLinLay
-                ,settingLinLay,notificationsLinLay,logoutLinLay;
+                ,settingLinLay,notificationsLinLay,logoutLinLay
+                ,profileTabLinLay,appointmentsTabLinLay,homeTabLinLay,doctorTabLinLay;
         ViewHolder() {
             mDuoDrawerLayout = (DuoDrawerLayout) findViewById(R.id.drawer);
             mDuoMenuView = (DuoMenuView) mDuoDrawerLayout.getMenuView();
@@ -178,6 +215,15 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
             logoutLinLay.setOnClickListener(this);
             closeImg.setOnClickListener(this);
 
+            homeTabLinLay = mDuoDrawerLayout.findViewById(R.id.homeTabLinLay);
+            doctorTabLinLay = mDuoDrawerLayout.findViewById(R.id.doctorTabLinLay);
+            appointmentsTabLinLay = mDuoDrawerLayout.findViewById(R.id.appointmentsTabLinLay);
+            profileTabLinLay = mDuoDrawerLayout.findViewById(R.id.profileTabLinLay);
+
+            homeTabLinLay.setOnClickListener(this);
+            doctorTabLinLay.setOnClickListener(this);
+            appointmentsTabLinLay.setOnClickListener(this);
+            profileTabLinLay.setOnClickListener(this);
 
             mToolbar = (Toolbar) findViewById(R.id.toolbar);
         }
@@ -185,6 +231,20 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
       @Override
       public void onClick(View view) {
           switch (view.getId()){
+              case R.id.homeTabLinLay:
+                  changeTab(1);
+                  break;
+              case R.id.doctorTabLinLay:
+                  changeTab(2);
+                  break;
+              case R.id.appointmentsTabLinLay:
+                  changeTab(3);
+                  break;
+              case R.id.profileTabLinLay:
+                  changeTab(4);
+                  break;
+
+
               case R.id.homeLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
                   break;

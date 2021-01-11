@@ -34,10 +34,13 @@ const val ATTACHMENT_TRANSUNION: Int = 7
 const val ATTACHMENT_EQUIFAX: Int = 8
 
 const val TAB_HOME: Int = 1
-
-const val TAB_CHAT: Int = 2
-const val TAB_NOTIFICATION: Int = 3
+const val TAB_DOCTOR: Int = 2
+const val TAB_APPOINTMENT: Int = 3
 const val TAB_PROFILE: Int = 4
+
+
+
+
 const val TAB_PROPERTY: Int = 5
 const val TAB_VISIT: Int = 6
 const val TAB_DASH: Int = 7
