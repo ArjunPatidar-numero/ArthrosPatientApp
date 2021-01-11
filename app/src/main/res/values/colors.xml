@@ -20,6 +20,11 @@
     <color name="color_6F8BA4">#6F8BA4</color>
     <color name="color_DCDBFF">#DCDBFF</color>
     <color name="color_504DE5">#504DE5</color>
+    <color name="color_edit_box_back">#F3F4F8</color>
+    <color name="color_edit_box_border">#C6C6C8</color>
+    <color name="color_edit_box_text">#949494</color>
+    <color name="color_facebook">#1976D2</color>
+    <color name="color_google">#E4E4E4</color>
 
 
 
