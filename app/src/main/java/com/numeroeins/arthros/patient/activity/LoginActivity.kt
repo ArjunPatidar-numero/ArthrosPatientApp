@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity() , View.OnClickListener{
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.loginTxt -> {
-                val intent = Intent(this, DashBoardActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
