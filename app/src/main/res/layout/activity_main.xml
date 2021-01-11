@@ -340,6 +340,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:layout_margin="5dp"
                     android:id="@+id/homeTabLinLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -348,22 +349,28 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
+                    <RelativeLayout
+                        android:padding="@dimen/margin_10dp"
+                        android:id="@+id/homeTabLinLayBack"
+                        android:layout_width="@dimen/height_50dp"
+                        android:background="@drawable/custom_round_back"
+                        android:layout_height="@dimen/height_50dp">
 
-                    <ImageView
-                        android:id="@+id/homeTabImg"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-                        android:src="@drawable/home_white_icon"
-                        app:tint="@color/colorPrimary" />
+                        <ImageView
+                            android:id="@+id/homeTabImg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/home_white_icon"
+                            app:tint="@color/colorPrimary" />
 
+                    </RelativeLayout>
                 </LinearLayout>
 
-
-
-
                 <LinearLayout
+                    android:layout_margin="5dp"
                     android:id="@+id/doctorTabLinLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -372,21 +379,27 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/doctorTabImg"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-
-                        app:tint="@color/colorPrimary"
-                        android:src="@drawable/doctors_white_icon"
-                        />
-
+                    <RelativeLayout
+                        android:padding="@dimen/margin_10dp"
+                        android:id="@+id/doctorTabLinLayBack"
+                        android:layout_width="@dimen/height_50dp"
+                        android:background="@drawable/custom_round_back"
+                        android:layout_height="@dimen/height_50dp">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/doctorTabImg"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            app:tint="@color/colorPrimary"
+                            android:src="@drawable/doctors_white_icon"
+                            />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_margin="5dp"
                     android:id="@+id/appointmentsTabLinLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -395,22 +408,30 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
-
+                    <RelativeLayout
+                        android:padding="@dimen/margin_10dp"
+                        android:id="@+id/appointmentsTabLinLayBack"
+                        android:layout_width="@dimen/height_50dp"
+                        android:background="@drawable/custom_round_back"
+                        android:layout_height="@dimen/height_50dp">
                     <ImageView
-                        android:id="@+id/appointmentsTabImg"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
+                        android:layout_centerInParent="true"
+                            android:id="@+id/appointmentsTabImg"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
 
-                        app:tint="@color/colorPrimary"
-                        android:src="@drawable/appointments_white_icon"
-                        />
+                            app:tint="@color/colorPrimary"
+                            android:src="@drawable/appointments_white_icon"
+                            />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:layout_margin="5dp"
                     android:id="@+id/profileTabLinLay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -419,16 +440,24 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
+                    <RelativeLayout
 
-                    <ImageView
-                        android:id="@+id/profileTabImg"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="@null"
-                        app:tint="@color/colorPrimary"
-                        android:src="@drawable/profile_white_icon"
-                        />
+                        android:padding="@dimen/margin_10dp"
+                        android:id="@+id/profileTabLinLayBack"
+                        android:layout_width="@dimen/height_50dp"
+                        android:background="@drawable/custom_round_back"
+                        android:layout_height="@dimen/height_50dp">
+                        <ImageView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/profileTabImg"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            app:tint="@color/colorPrimary"
+                            android:src="@drawable/profile_white_icon"
+                            />
+                    </RelativeLayout>
 
                 </LinearLayout>
 

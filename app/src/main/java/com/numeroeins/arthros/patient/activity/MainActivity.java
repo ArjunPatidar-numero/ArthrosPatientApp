@@ -1,15 +1,18 @@
 package com.numeroeins.arthros.patient.activity;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -127,26 +130,87 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         Fragment fragment;
         switch (pos){
             case 1:
+
+
+                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+                setBgWithOutStrokeColor(profileTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(appointmentsTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(doctorTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(homeTabLinLayBack, ContextCompat.getColor(this, R.color.color_FF5119_20));
+
                 fragment = new HomeFragment();
                 fragmentTransaction.replace(R.id.container, fragment, "HomeFragment");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
             case 2:
+
+                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+
+                setBgWithOutStrokeColor(profileTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(appointmentsTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(doctorTabLinLayBack, ContextCompat.getColor(this, R.color.color_FF5119_20));
+                setBgWithOutStrokeColor(homeTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+
                 fragment = new DoctorFragment();
                 fragmentTransaction.replace(R.id.container, fragment, "DoctorFragment");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
             case 3:
+
+                appointmentsTabImg .setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+
+                setBgWithOutStrokeColor(profileTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(appointmentsTabLinLayBack, ContextCompat.getColor(this, R.color.color_FF5119_20));
+                setBgWithOutStrokeColor(doctorTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(homeTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+
+
                 fragment = new AppointmentFragment();
                 fragmentTransaction.replace(R.id.container, fragment, "AppointmentFragment");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
             case 4:
+
+                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+
+
+                setBgWithOutStrokeColor(profileTabLinLayBack, ContextCompat.getColor(this, R.color.color_FF5119_20));
+                setBgWithOutStrokeColor(appointmentsTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(doctorTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+                setBgWithOutStrokeColor(homeTabLinLayBack, ContextCompat.getColor(this, R.color.white));
+
+
+
+
+
+
                 fragment = new ProfileFragment();
                 fragmentTransaction.replace(R.id.container, fragment, "ProfileFragment");
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
         }
+    }
+
+
+    public  void setBgWithOutStrokeColor(RelativeLayout school, int colors) {
+        GradientDrawable bgShape = (GradientDrawable) school.getBackground();
+        bgShape.setColor(colors);
+        //  bgShape.setStroke(1, colors);
     }
 
   /*  @SuppressLint("NonConstantResourceId")
@@ -177,6 +241,10 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
 
     }
 */
+
+    ImageView homeTabImg,doctorTabImg,appointmentsTabImg,profileTabImg;
+    RelativeLayout homeTabLinLayBack,doctorTabLinLayBack,profileTabLinLayBack,appointmentsTabLinLayBack;
+
     private class ViewHolder implements View.OnClickListener {
         private DuoDrawerLayout mDuoDrawerLayout;
         private DuoMenuView mDuoMenuView;
@@ -219,6 +287,19 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
             doctorTabLinLay = mDuoDrawerLayout.findViewById(R.id.doctorTabLinLay);
             appointmentsTabLinLay = mDuoDrawerLayout.findViewById(R.id.appointmentsTabLinLay);
             profileTabLinLay = mDuoDrawerLayout.findViewById(R.id.profileTabLinLay);
+
+            homeTabLinLayBack = mDuoDrawerLayout.findViewById(R.id.homeTabLinLayBack);
+            doctorTabLinLayBack = mDuoDrawerLayout.findViewById(R.id.doctorTabLinLayBack);
+            appointmentsTabLinLayBack = mDuoDrawerLayout.findViewById(R.id.appointmentsTabLinLayBack);
+            profileTabLinLayBack = mDuoDrawerLayout.findViewById(R.id.profileTabLinLayBack);
+
+
+
+            homeTabImg = mDuoDrawerLayout.findViewById(R.id.homeTabImg);
+            doctorTabImg = mDuoDrawerLayout.findViewById(R.id.doctorTabImg);
+            appointmentsTabImg = mDuoDrawerLayout.findViewById(R.id.appointmentsTabImg);
+            profileTabImg = mDuoDrawerLayout.findViewById(R.id.profileTabImg);
+
 
             homeTabLinLay.setOnClickListener(this);
             doctorTabLinLay.setOnClickListener(this);
