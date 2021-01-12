@@ -166,10 +166,9 @@ const val THIS_CHAT_STATUS_ACTIVE = "active"
 const val THIS_CHAT_STATUS_OFFLINE = "Offline"
 
 const val CLICK_TYPE_PARENT = "parent"
-const val CLICK_TYPE_DOWNLOAD = "download"
-const val CLICK_TYPE_DELETE = "delete"
-const val CLICK_TYPE_BEFORE = "before"
-const val CLICK_TYPE_AFTER = "after"
+const val CLICK_TYPE_CALL = "call"
+const val CLICK_TYPE_BOOK = "book"
+
 
 
 

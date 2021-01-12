@@ -5,14 +5,14 @@
     <data>
 
         <variable
-            name="ourSpecialitiesAdapter"
-            type="com.numeroeins.arthros.patient.adapter.OurSpecialitiesAdapter" />
+            name="servicesAllAdapter"
+            type="com.numeroeins.arthros.patient.adapter.ServicesAllAdapter" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/parentPanel"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_15dp"
         android:layout_marginHorizontal="@dimen/margin_5dp"
         android:background="@color/white"
@@ -33,25 +33,45 @@
             <ImageView
                 android:id="@+id/rentalImgVw"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dime_100dp"
+                android:layout_height="@dimen/dime_120dp"
                 android:layout_gravity="start|center"
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 android:src="@drawable/arthros_logo"
                 android:contentDescription="@null"
                 />
+            <LinearLayout
+                android:layout_below="@+id/rentalImgVw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorAccent"
+                android:paddingVertical="@dimen/margin_10dp"
+                android:paddingHorizontal="@dimen/margin_5dp"
+                >
                 <TextView
-                    android:layout_below="@+id/rentalImgVw"
-                    android:background="@color/colorAccent"
                     android:id="@+id/titleTxt"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="center"
                     android:text="Joint Preservation"
                     android:textColor="@color/white"
+                    android:layout_marginBottom="@dimen/margin_5dp"
                     android:textSize="@dimen/text_size_12dp" />
+                <TextView
+                    android:id="@+id/descriptionTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lines="2"
+                    android:textAlignment="center"
+                    android:ellipsize="end"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_10dp" />
+            </LinearLayout>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

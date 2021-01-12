@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#212741</color>
     <color name="colorPrimaryDark">#C2C1C3</color>
-    <color name="colorAccent">#12A0D0</color>
+    <color name="colorAccent">#FF5119</color>
 
 
     <color name="black">#FF000000</color>
@@ -13,7 +13,6 @@
 
 
     <color name="color_212741">#212741</color>
-    <color name="color_FF5119">#FF5119</color>
     <color name="color_FF5119_20">#65FF5119</color>
     <color name="color_FC2727">#FC2727</color>
     <color name="color_475A96">#475A96</color>
@@ -22,6 +21,7 @@
     <color name="color_DCDBFF">#DCDBFF</color>
     <color name="color_504DE5">#504DE5</color>
     <color name="color_edit_box_back">#F3F4F8</color>
+    <color name="color_card_border">#E3E3E3</color>
     <color name="color_edit_box_border">#C6C6C8</color>
     <color name="color_edit_box_text">#949494</color>
     <color name="color_facebook">#1976D2</color>

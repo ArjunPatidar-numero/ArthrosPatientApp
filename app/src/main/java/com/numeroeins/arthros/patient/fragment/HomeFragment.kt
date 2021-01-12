@@ -1,5 +1,6 @@
 package com.numeroeins.arthros.patient.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,8 +9,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.activity.*
 import com.numeroeins.arthros.patient.adapter.ImageSliderAdapter
+import com.numeroeins.arthros.patient.adapter.OurServicesAdapter
 import com.numeroeins.arthros.patient.adapter.OurSpecialitiesAdapter
 import com.numeroeins.arthros.patient.beans.SliderItem
 import com.numeroeins.arthros.patient.databinding.FragmentHomeBinding
@@ -20,12 +24,15 @@ import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawControlle
 import com.smarteist.autoimageslider.SliderAnimations
 import io.reactivex.disposables.Disposable
 
-class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, OurSpecialitiesAdapter.onRecyclerViewItemClickListener {
+class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, OurSpecialitiesAdapter.onRecyclerViewItemClickListener, OurServicesAdapter.onRecyclerViewItemClickListener {
     private lateinit var homeBinding: FragmentHomeBinding
     private var userPreference: UserPreference? = null
 
     private lateinit var ourSpecialitiesAdapter: OurSpecialitiesAdapter
     private val ourSpecialitiesArrayList:ArrayList<String> = ArrayList()
+
+    private lateinit var ourServicesAdapter: OurServicesAdapter
+    private val ourServicesArrayList:ArrayList<String> = ArrayList()
 
     var imageArrayList: ArrayList<SliderItem> = ArrayList()
     lateinit var imageSliderAdapter : ImageSliderAdapter
@@ -47,6 +54,16 @@ class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, 
     private fun initView() {
 
 
+        val pullToRefresh: SwipeRefreshLayout = homeBinding!!.pullToRefresh
+        pullToRefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
+            override fun onRefresh() {
+                initView() // your code
+                pullToRefresh.setRefreshing(false)
+            }
+        })
+
+        homeBinding.viewAllSpecialities.setOnClickListener(this)
+        homeBinding.viewAllServices.setOnClickListener(this)
 
         imageSliderAdapter = ImageSliderAdapter(requireActivity(),requireActivity())
         homeBinding.imageSlider!!.setSliderAdapter(imageSliderAdapter)
@@ -68,11 +85,54 @@ class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, 
             }
         })
 
+        ourSpecialitiesArrayList.add("")
+        ourSpecialitiesArrayList.add("")
+        ourSpecialitiesArrayList.add("")
+        ourSpecialitiesArrayList.add("")
+        ourSpecialitiesArrayList.add("")
+
+
+        if(ourSpecialitiesArrayList.size>0)
+        {
+            homeBinding.ourSpecialitiesRv.visibility = View.VISIBLE
+            homeBinding.noDataAvailableTxt.visibility = View.GONE
+            homeBinding.viewAllSpecialities.visibility = View.VISIBLE
+        }else{
+            homeBinding.ourSpecialitiesRv.visibility = View.GONE
+            homeBinding.viewAllSpecialities.visibility = View.GONE
+            homeBinding.noDataAvailableTxt.visibility = View.VISIBLE
+        }
 
         ourSpecialitiesAdapter= OurSpecialitiesAdapter(requireActivity(),ourSpecialitiesArrayList)
         homeBinding.ourSpecialitiesRv.layoutManager =   LinearLayoutManager(activity,  LinearLayoutManager.HORIZONTAL, false)
         homeBinding.ourSpecialitiesRv.adapter = ourSpecialitiesAdapter
         ourSpecialitiesAdapter.setOnItemClickListener(this)
+        ourSpecialitiesAdapter.notifyDataSetChanged()
+
+
+
+        ourServicesArrayList.add("")
+        ourServicesArrayList.add("")
+        ourServicesArrayList.add("")
+        ourServicesArrayList.add("")
+        ourServicesArrayList.add("")
+
+        if(ourServicesArrayList.size>0)
+        {
+            homeBinding.ourServicesRv.visibility = View.VISIBLE
+            homeBinding.viewAllServices.visibility = View.VISIBLE
+            homeBinding.noDataAvailableServicesTxt.visibility = View.GONE
+        }else{
+            homeBinding.ourServicesRv.visibility = View.GONE
+            homeBinding.viewAllServices.visibility = View.GONE
+            homeBinding.noDataAvailableServicesTxt.visibility = View.VISIBLE
+        }
+
+        ourServicesAdapter= OurServicesAdapter(requireActivity(),ourServicesArrayList)
+        homeBinding.ourServicesRv.layoutManager =   LinearLayoutManager(activity,  LinearLayoutManager.HORIZONTAL, false)
+        homeBinding.ourServicesRv.adapter = ourServicesAdapter
+        ourServicesAdapter.setOnItemClickListener(this)
+        ourServicesAdapter.notifyDataSetChanged()
 
 
         val sliderItem = SliderItem()
@@ -114,11 +174,31 @@ class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, 
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+    override fun onClick(view: View?) {
+        when (view?.id) {
+
+            R.id.viewAllServices -> {
+                val intent = Intent(requireActivity(), ServicesActivity::class.java)
+                startActivity(intent)
+                requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }
+            R.id.viewAllSpecialities -> {
+                val intent = Intent(requireActivity(), SpecialitiesActivity::class.java)
+                startActivity(intent)
+                requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }
+        }
     }
 
     override fun onOurSpecialitiesListItemClickListener(position: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(requireActivity(), SpecialityDetailsActivity::class.java)
+        startActivity(intent)
+        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+    }
+
+    override fun onOurServicesListItemClickListener(position: Int) {
+        val intent = Intent(requireActivity(), ServiceDetailsActivity::class.java)
+        startActivity(intent)
+        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
     }
 }

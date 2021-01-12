@@ -9,65 +9,149 @@
             name="homeFragment"
             type="com.numeroeins.arthros.patient.fragment.HomeFragment" />
     </data>
-
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/pullToRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <androidx.cardview.widget.CardView
-            android:id="@+id/viewPagerPar"
-            app:cardUseCompatPadding="false"
+        android:layout_height="wrap_content">
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="15dp"
-            android:padding="0dp"
-            android:elevation="0dp">
-            <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/imageSlider"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                app:sliderAnimationDuration="600"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="0"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMarginBottom="@dimen/margin_10dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="1dp"
-                app:sliderIndicatorSelectedColor="@color/color_FF5119"
-                app:sliderIndicatorUnselectedColor="@color/colorPrimary"
-                app:sliderScrollTimeInSec="1"
-                app:sliderStartAutoCycle="true" />
-        </androidx.cardview.widget.CardView>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/margin_10dp"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
             >
-            <TextView
-                android:layout_centerHorizontal="true"
-                android:id="@+id/textTitle"
-                android:text="@string/our_specialties"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/poppins_medium"
-                android:lines="1"
-                android:textSize="@dimen/text_size_14dp" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ourSpecialitiesRv"
+            <LinearLayout
+                android:padding="@dimen/margin_20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/our_specialities_adapter"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_10dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="20"
-                />
-        </LinearLayout>
+                android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/viewPagerPar"
+                    app:cardUseCompatPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_20dp"
+                    app:cardCornerRadius="15dp"
+                    android:padding="0dp"
+                    android:elevation="0dp">
+                    <com.smarteist.autoimageslider.SliderView
+                        android:id="@+id/imageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dime_200_dp"
+                        app:sliderAnimationDuration="600"
+                        app:sliderAutoCycleDirection="back_and_forth"
+                        app:sliderAutoCycleEnabled="true"
+                        app:sliderIndicatorAnimationDuration="0"
+                        app:sliderIndicatorGravity="center_horizontal|bottom"
+                        app:sliderIndicatorMarginBottom="@dimen/margin_10dp"
+                        app:sliderIndicatorOrientation="horizontal"
+                        app:sliderIndicatorPadding="3dp"
+                        app:sliderIndicatorRadius="1dp"
+                        app:sliderIndicatorSelectedColor="@color/colorAccent"
+                        app:sliderIndicatorUnselectedColor="@color/colorPrimary"
+                        app:sliderScrollTimeInSec="1"
+                        app:sliderStartAutoCycle="true" />
+                </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10dp"
+                    >
+                    <TextView
+                        android:text="@string/our_specialties"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="1"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_14dp" />
+                    <TextView
+                        android:id="@+id/viewAllSpecialities"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/view_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:visibility="gone"
+                        android:textSize="@dimen/text_size_12dp" />
+                </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ourSpecialitiesRv"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/margin_20dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:layout_margin="@dimen/margin_20dp"
+                    android:id="@+id/noDataAvailableTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:visibility="visible"
+                    android:text="@string/no_data_available"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dialog_msg_text_color"
+                    android:textSize="@dimen/text_size_12dp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10dp"
+                    >
+                    <TextView
+                        android:text="@string/our_services"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lines="1"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/text_size_14dp" />
+                    <TextView
+                        android:id="@+id/viewAllServices"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="@string/view_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:visibility="gone"
+                        android:textSize="@dimen/text_size_12dp" />
+                </RelativeLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:paddingBottom="@dimen/height_50dp"
+                    android:id="@+id/ourServicesRv"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/margin_20dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:layout_margin="@dimen/margin_20dp"
+                    android:id="@+id/noDataAvailableServicesTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_horizontal"
+                    android:visibility="visible"
+                    android:text="@string/no_data_available"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dialog_msg_text_color"
+                    android:textSize="@dimen/text_size_12dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
