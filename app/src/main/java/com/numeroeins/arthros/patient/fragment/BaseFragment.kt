@@ -53,9 +53,9 @@ open class BaseFragment : Fragment() {
             (activity as BaseActivity?)!!.showLoader(title)
         }
     }
-    protected fun logOutPrompt(activity: Activity, userPreference: UserPreference){
+    protected fun logOutPrompt(activity: Activity){
         if (activity != null) {
-            (activity as BaseActivity?)!!.logOutPrompt(activity,userPreference)
+            (activity as BaseActivity?)!!.logOutPrompt(activity)
         }
     }
 

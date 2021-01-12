@@ -1,11 +1,16 @@
 package com.numeroeins.arthros.patient.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.activity.ChangePasswordActivity
+import com.numeroeins.arthros.patient.activity.EditProfileActivity
+import com.numeroeins.arthros.patient.activity.MainActivity
+import com.numeroeins.arthros.patient.activity.RegisterActivity
 import com.numeroeins.arthros.patient.databinding.FragmentProfileBinding
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.utility.UserPreference
@@ -26,8 +31,34 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
         val view: View = fragmentProfileBinding.root
         setOnFragmentListener(this)
         userPreference = UserPreference.getInstance(requireActivity())
+
+        initView()
         callApi()
         return view
+    }
+
+    private fun initView() {
+        fragmentProfileBinding.editProfileLinLay.setOnClickListener(this)
+        fragmentProfileBinding.changePasswordLinLay.setOnClickListener(this)
+        fragmentProfileBinding.logoutLinLay.setOnClickListener(this)
+
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.editProfileLinLay -> {
+                val intent = Intent(activity, EditProfileActivity::class.java)
+                startActivity(intent)
+                activity!!.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }
+            R.id.changePasswordLinLay -> {
+                val intent = Intent(activity, ChangePasswordActivity::class.java)
+                startActivity(intent)
+                activity!!.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }  R.id.logoutLinLay -> {
+            activity?.let { logOutPrompt(it) }
+        }
+        }
     }
 
     private fun callApi() {
@@ -50,7 +81,5 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
+
 }

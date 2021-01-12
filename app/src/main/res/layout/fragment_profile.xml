@@ -15,15 +15,154 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/homeRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="20"
-            />
+        <de.hdodenhof.circleimageview.CircleImageView
 
+            android:id="@+id/venuesImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/user_dummy_profile_grey"
+            app:civ_border_color="@android:color/transparent"
+            app:civ_border_width=".1dp"
+           />
+
+        <TextView
+            android:id="@+id/nameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:text="Dylan Meringue"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/margin_20dp" />
+
+
+        <TextView
+            android:id="@+id/emailTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="dylanmeringue@gmail.com"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/margin_14dp" />
+        <TextView
+            android:id="@+id/mobileTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="+1 9632456339"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/margin_14dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/editProfileLinLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin_30dp"
+                    android:layout_height="@dimen/margin_30dp"
+                    android:layout_gravity="start|center"
+                    android:contentDescription="@null"
+                    android:gravity="start|center"
+                    android:src="@drawable/edit_icon"
+    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:text="@string/edit_profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/margin_14dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/changePasswordLinLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin_30dp"
+                    android:layout_height="@dimen/margin_30dp"
+                    android:layout_gravity="start|center"
+                    android:contentDescription="@null"
+                    android:gravity="start|center"
+                    android:src="@drawable/lock_icon"
+               />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:text="@string/change_password"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/margin_14dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/logoutLinLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/margin_30dp"
+                    android:layout_height="@dimen/margin_30dp"
+                    android:layout_gravity="start|center"
+                    android:contentDescription="@null"
+                    android:gravity="start|center"
+                    android:src="@drawable/logout_blue_icon"
+      />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:text="@string/logout"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/margin_14dp" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

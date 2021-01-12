@@ -27,9 +27,6 @@ import com.numeroeins.arthros.patient.R
 
 
 import com.numeroeins.arthros.patient.fragment.FragmentBaseListener
-import com.numeroeins.arthros.patient.utility.PERMISSION_REQUEST_LOCATION
-import com.numeroeins.arthros.patient.utility.PERMISSION_REQUEST_READ_WRITE
-import com.numeroeins.arthros.patient.utility.UserPreference
 import com.numeroeins.arthros.patient.servermanager.APIClient.getClient
 import com.numeroeins.arthros.patient.servermanager.APIClient.gsonAsConvert
 import com.numeroeins.arthros.patient.servermanager.APIInterface
@@ -37,7 +34,7 @@ import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.servermanager.request.GetRequestModel
 import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
-import com.numeroeins.arthros.patient.utility.CustomProgress
+import com.numeroeins.arthros.patient.utility.*
 
 
 import io.reactivex.Observable
@@ -461,13 +458,13 @@ open class BaseActivity : AppCompatActivity() {
         builder.setMessage("Do you want to Logout?")
         builder.setPositiveButton("OK",
             DialogInterface.OnClickListener { dialog, id ->
-             /*   userPreference?.clear(activity)
-                val intent = Intent(activity, WelcomeActivity::class.java)
+                userPreference?.clear(activity)
+                val intent = Intent(activity, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra(PARAM_IS_COMING_BACK, true)
                 startActivity(intent)
                 activity.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                finish()*/
+                finish()
             })
 
         builder.setNegativeButton("CANCEL",
