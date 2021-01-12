@@ -12,11 +12,9 @@ import com.numeroeins.arthros.patient.R
 import com.numeroeins.arthros.patient.adapter.OrderListAdapter
 import com.numeroeins.arthros.patient.databinding.FragmentAppointmentBinding
 import com.numeroeins.arthros.patient.databinding.FragmentHomeBinding
+import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
-import com.numeroeins.arthros.patient.utility.TYPE_ONGOING
-import com.numeroeins.arthros.patient.utility.TYPE_PREVIOUS
-import com.numeroeins.arthros.patient.utility.TYPE_UPCOMING
-import com.numeroeins.arthros.patient.utility.UserPreference
+import com.numeroeins.arthros.patient.utility.*
 import io.reactivex.disposables.Disposable
 
 class AppointmentFragment  :BaseFragment(), FragmentBaseListener, View.OnClickListener{
@@ -36,11 +34,37 @@ class AppointmentFragment  :BaseFragment(), FragmentBaseListener, View.OnClickLi
         setOnFragmentListener(this)
         userPreference = UserPreference.getInstance(requireActivity())
         defaultType=TYPE_ONGOING
+        fragmentAppointmentBinding.ongoingLinLay.setOnClickListener(this)
+        fragmentAppointmentBinding.previousLinLay.setOnClickListener(this)
+        fragmentAppointmentBinding.upcomingLinLay.setOnClickListener(this)
         callGetPropertyApi()
         return view
     }
+    override fun onClick(view: View?) {
+        when (view?.id) {
 
+            R.id.ongoingLinLay -> {
+                callApiOnClick(ON_GOING_ORDER)
+                selectTab(TYPE_ONGOING)
+            }
+            R.id.upcomingLinLay -> {
+                callApiOnClick(UPCOMING_ORDER)
+                selectTab(TYPE_UPCOMING)
+            }
 
+            R.id.previousLinLay -> {
+                callApiOnClick(PREVIOUS_ORDER)
+                selectTab(TYPE_PREVIOUS)
+            }
+        }
+    }
+    private fun callApiOnClick(type:String) {
+      /*  val getRequestModel = GetRequestModel()
+        getRequestModel.type= type
+        showLoader(resources.getString(R.string.please_wait))
+        val commonModel = CommonValueModel()
+        getApiCall(this, UrlManager.MY_ORDER_LIST, getRequestModel, commonModel)*/
+    }
     override fun onFragmentApiSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
 
     }
@@ -56,6 +80,8 @@ class AppointmentFragment  :BaseFragment(), FragmentBaseListener, View.OnClickLi
     override fun onReadWriteStoragePermissionDeny(medialTypes: String?) {
 
     }
+
+
     private fun setAdapter() {
         when (defaultType) {
             TYPE_ONGOING -> {
@@ -116,17 +142,15 @@ class AppointmentFragment  :BaseFragment(), FragmentBaseListener, View.OnClickLi
 
     private fun setSelected(tabStatus: View, tabText: TextView) {
         fragmentAppointmentBinding.onGoingView.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
-        fragmentAppointmentBinding.onGoingTxt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.black))
+        fragmentAppointmentBinding.onGoingTxt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
         fragmentAppointmentBinding.previousView.setBackgroundColor( ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
-        fragmentAppointmentBinding.previousText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.black))
+        fragmentAppointmentBinding.previousText.setTextColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
         fragmentAppointmentBinding.upcomingView.setBackgroundColor( ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
-        fragmentAppointmentBinding.upcomingTxt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.black))
+        fragmentAppointmentBinding.upcomingTxt.setTextColor(ContextCompat.getColor(requireActivity(), R.color.colorPrimary))
 
-        tabStatus.setBackgroundColor(ContextCompat.getColor(requireActivity(),R.color.colorPrimary))
+        tabStatus.setBackgroundColor(ContextCompat.getColor(requireActivity(),R.color.colorAccent))
         tabText.setTextColor(ContextCompat.getColor(requireActivity(),R.color.colorPrimary))
     }
 
-    override fun onClick(v: View?) {
 
-    }
 }

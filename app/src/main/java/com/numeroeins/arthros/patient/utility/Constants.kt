@@ -21,7 +21,9 @@ const val TYPE_ONGOING: Int = 1
 const val TYPE_PREVIOUS: Int = 2
 const val TYPE_UPCOMING: Int = 3
 
-
+const val ON_GOING_ORDER: String = "ongoing"
+const val UPCOMING_ORDER: String = "upcoming"
+const val PREVIOUS_ORDER: String = "previous"
 
 const val CAPTURE_AFTER_IMAGE: Int = 1
 const val CAPTURE_DURING_IMAGE: Int = 2
