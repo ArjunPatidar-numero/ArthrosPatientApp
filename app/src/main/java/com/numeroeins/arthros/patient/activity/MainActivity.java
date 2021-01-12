@@ -35,7 +35,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClickListener {
     // private MenuAdapter mMenuAdapter;
     private ViewHolder mViewHolder;
+    private TextView titleTxt;
+    private ImageView titleImg;
     private ArrayList<String> mTitles = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,10 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
     }
 
     private void initView() {
+
+        titleImg = findViewById(R.id.titleImg);
+        titleTxt = findViewById(R.id.titleTxt);
+
         mTitles = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menuOptions)));
         // Initialize the views
         mViewHolder = new ViewHolder();
@@ -131,8 +138,9 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         switch (pos){
             case 1:
 
-
-                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                titleImg.setVisibility(View.VISIBLE);
+                titleTxt.setVisibility(View.GONE);
+                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -148,7 +156,10 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 break;
             case 2:
 
-                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                titleImg.setVisibility(View.GONE);
+                titleTxt.setVisibility(View.VISIBLE);
+                titleTxt.setText("Doctors");
+                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -165,7 +176,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 break;
             case 3:
 
-                appointmentsTabImg .setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                appointmentsTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -183,7 +194,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 break;
             case 4:
 
-                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.color_FF5119), android.graphics.PorterDuff.Mode.MULTIPLY);
+                profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);

@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.databinding.OurServicesAdapterBinding
 import com.numeroeins.arthros.patient.databinding.OurSpecialitiesAdapterBinding
+import com.numeroeins.arthros.patient.databinding.ServicesAllAdapterBinding
 import com.numeroeins.arthros.patient.utility.UserPreference
 import java.util.ArrayList
 
-class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
-    : RecyclerView.Adapter<OurSpecialitiesAdapter.ListViewHolder>() {
+class ServicesAllAdapter(activity: Context, orderList: ArrayList<String>)
+    : RecyclerView.Adapter<ServicesAllAdapter.ListViewHolder>() {
     var activity: Context
     private var orderList: ArrayList<String>? = null
     private var userPreference: UserPreference? = null
@@ -22,18 +24,18 @@ class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
     }
 
 
-    class ListViewHolder(listBinding: OurSpecialitiesAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
+    class ListViewHolder(listBinding: ServicesAllAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
     {
-        var listBinding: OurSpecialitiesAdapterBinding
+        var listBinding: ServicesAllAdapterBinding
         init {
             this.listBinding = listBinding
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val listBinding = DataBindingUtil.inflate<OurSpecialitiesAdapterBinding>(
+        val listBinding = DataBindingUtil.inflate<ServicesAllAdapterBinding>(
             LayoutInflater.from(parent.context)
-            , R.layout.our_specialities_adapter, parent, false)
+            , R.layout.services_all_adapter, parent, false)
         return ListViewHolder(listBinding)
     }
 
@@ -44,7 +46,7 @@ class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
          */
         holder.listBinding.parentPanel.setOnClickListener{
             if (mItemClickListener != null) {
-                mItemClickListener?.onOurSpecialitiesListItemClickListener(position);
+                mItemClickListener?.onOurServicesListItemClickListener(position);
             }
         }
     }
@@ -55,7 +57,7 @@ class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
     }
 
     interface onRecyclerViewItemClickListener {
-        fun onOurSpecialitiesListItemClickListener(position: Int)
+        fun onOurServicesListItemClickListener(position: Int)
 
     }
 

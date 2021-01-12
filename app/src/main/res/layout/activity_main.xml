@@ -296,13 +296,8 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
-
             </androidx.core.widget.NestedScrollView>
-
-
         </RelativeLayout>
-
     </com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView>
 
     <LinearLayout
@@ -319,6 +314,8 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
             <ImageView
+                android:id="@+id/titleImg"
+                android:visibility="gone"
                 android:layout_marginStart="-50dp"
                 android:layout_width="@dimen/dime_100dp"
                 android:padding="@dimen/margin_15dp"
@@ -326,27 +323,34 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/arthros_logo"/>
+            <TextView
+                android:layout_gravity="center"
+                android:text="Arthros"
+                android:id="@+id/titleTxt"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/poppins_medium"
+                android:lines="1"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/text_size_16dp" />
         </androidx.appcompat.widget.Toolbar>
-
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <FrameLayout
+                android:layout_above="@+id/bottombarLay"
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:padding="?attr/listPreferredItemPaddingRight" />
-
-
+                android:background="@android:color/white" />
             <LinearLayout
+                android:id="@+id/bottombarLay"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:orientation="horizontal">
-
                 <LinearLayout
                     android:layout_margin="5dp"
                     android:id="@+id/homeTabLinLay"
@@ -358,11 +362,11 @@
                     android:background="@android:color/transparent"
                     android:orientation="vertical">
                     <RelativeLayout
-                        android:padding="@dimen/margin_10dp"
+
                         android:id="@+id/homeTabLinLayBack"
-                        android:layout_width="@dimen/height_50dp"
+                        android:layout_width="@dimen/margin_40dp"
                         android:background="@drawable/custom_round_back"
-                        android:layout_height="@dimen/height_50dp">
+                        android:layout_height="@dimen/margin_40dp">
 
                         <ImageView
                             android:id="@+id/homeTabImg"
@@ -390,9 +394,9 @@
                     <RelativeLayout
                         android:padding="@dimen/margin_10dp"
                         android:id="@+id/doctorTabLinLayBack"
-                        android:layout_width="@dimen/height_50dp"
+                        android:layout_width="@dimen/margin_40dp"
                         android:background="@drawable/custom_round_back"
-                        android:layout_height="@dimen/height_50dp">
+                        android:layout_height="@dimen/margin_40dp">
                         <ImageView
                             android:layout_centerInParent="true"
                             android:id="@+id/doctorTabImg"
@@ -419,9 +423,9 @@
                     <RelativeLayout
                         android:padding="@dimen/margin_10dp"
                         android:id="@+id/appointmentsTabLinLayBack"
-                        android:layout_width="@dimen/height_50dp"
+                        android:layout_width="@dimen/margin_40dp"
                         android:background="@drawable/custom_round_back"
-                        android:layout_height="@dimen/height_50dp">
+                        android:layout_height="@dimen/margin_40dp">
                     <ImageView
                         android:layout_centerInParent="true"
                             android:id="@+id/appointmentsTabImg"
@@ -437,7 +441,6 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_margin="5dp"
                     android:id="@+id/profileTabLinLay"
@@ -452,9 +455,9 @@
 
                         android:padding="@dimen/margin_10dp"
                         android:id="@+id/profileTabLinLayBack"
-                        android:layout_width="@dimen/height_50dp"
+                        android:layout_width="@dimen/margin_40dp"
                         android:background="@drawable/custom_round_back"
-                        android:layout_height="@dimen/height_50dp">
+                        android:layout_height="@dimen/margin_40dp">
                         <ImageView
                             android:layout_centerInParent="true"
                             android:id="@+id/profileTabImg"
@@ -468,12 +471,6 @@
                     </RelativeLayout>
 
                 </LinearLayout>
-
-
-
-
-
-
             </LinearLayout>
 
 

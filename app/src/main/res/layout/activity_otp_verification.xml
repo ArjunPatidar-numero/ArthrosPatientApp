@@ -229,8 +229,8 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="@string/resend"
-                        android:textColor="@color/color_FF5119"
-                        android:textColorHint="@color/color_FF5119"
+                        android:textColor="@color/colorAccent"
+                        android:textColorHint="@color/colorAccent"
                         android:textSize="@dimen/margin_16dp"
                         android:fontFamily="@font/poppins_semibold"
                         tools:ignore="AllCaps,SpUsage" />

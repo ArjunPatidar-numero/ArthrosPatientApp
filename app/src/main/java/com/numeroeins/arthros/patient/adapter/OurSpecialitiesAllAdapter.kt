@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.databinding.OurServicesAdapterBinding
 import com.numeroeins.arthros.patient.databinding.OurSpecialitiesAdapterBinding
+import com.numeroeins.arthros.patient.databinding.OurSpecialitiesAllAdapterBinding
 import com.numeroeins.arthros.patient.utility.UserPreference
 import java.util.ArrayList
 
-class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
-    : RecyclerView.Adapter<OurSpecialitiesAdapter.ListViewHolder>() {
+class OurSpecialitiesAllAdapter(activity: Context, orderList: ArrayList<String>)
+    : RecyclerView.Adapter<OurSpecialitiesAllAdapter.ListViewHolder>() {
     var activity: Context
     private var orderList: ArrayList<String>? = null
     private var userPreference: UserPreference? = null
@@ -22,18 +24,18 @@ class OurSpecialitiesAdapter(activity: Context, orderList: ArrayList<String>)
     }
 
 
-    class ListViewHolder(listBinding: OurSpecialitiesAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
+    class ListViewHolder(listBinding: OurSpecialitiesAllAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
     {
-        var listBinding: OurSpecialitiesAdapterBinding
+        var listBinding: OurSpecialitiesAllAdapterBinding
         init {
             this.listBinding = listBinding
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val listBinding = DataBindingUtil.inflate<OurSpecialitiesAdapterBinding>(
+        val listBinding = DataBindingUtil.inflate<OurSpecialitiesAllAdapterBinding>(
             LayoutInflater.from(parent.context)
-            , R.layout.our_specialities_adapter, parent, false)
+            , R.layout.our_specialities_all_adapter, parent, false)
         return ListViewHolder(listBinding)
     }
 

@@ -49,4 +49,8 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="we_have_sent_you_a_verification_code_otp">We have sent you a verification Code (OTP)</string>
     <string name="our_specialties">Our Specialties</string>
+    <string name="our_services">Our Services</string>
+    <string name="view_all"><u>View All</u></string>
+    <string name="no_data_available">No Data Available</string>
+    <string name="about">About</string>
 </resources>

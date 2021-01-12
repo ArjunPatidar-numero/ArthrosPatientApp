@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="specialityDetailsActivity"
+            type="com.numeroeins.arthros.patient.activity.SpecialityDetailsActivity" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.SpecialitiesActivity"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/topHeader"
+            layout="@layout/top_nav_bar_view"
+            />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                >
+                <LinearLayout
+                    android:padding="@dimen/margin_20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/parentViewCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="185dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:divider="@android:color/transparent"
+                        android:elevation="0dp"
+                        app:cardCornerRadius="@dimen/margin_15dp"
+                        app:cardElevation="10dp"
+                        app:cardPreventCornerOverlap="false">
+                        <RelativeLayout
+                            android:background="@drawable/gray_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+
+                            <ImageView
+                                android:id="@+id/rentalImgVw"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="start|center"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/arthros_logo"
+                                android:contentDescription="@null"
+                                />
+                            <TextView
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="@dimen/margin_20dp"
+                                android:layout_marginBottom="@dimen/margin_10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="visible"
+                                android:text="Knee Fracture Repair"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textAllCaps="false"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_20dp" />
+
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:layout_marginTop="@dimen/margin_20dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:text="@string/about"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_14dp" />
+                    <TextView
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:id="@+id/aboutTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        android:text="A person having a knee break has broken a few of the bones which compose the knee joint: the thighbone (Femur), the knee cap (Patella), along the shin bone (Tibia). This happens when the bone cannot resist outside forces, usually as a result of trauma or disease. Fractures can include a little crack in the bone to a complete separation. While a lot of people with knee fractures recover completely, some fractures result in poor muscle strength and disability. Dr. Vinay will thoroughly inspect the size of your knee break and also recommend that the best treatment intend to repair your knee and return to your everyday tasks and favorite athletic tasks whenever possible."
+                        android:fontFamily="@font/poppins_regular"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_14dp" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+</layout>
