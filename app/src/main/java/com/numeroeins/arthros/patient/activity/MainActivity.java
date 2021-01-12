@@ -307,6 +307,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
             profileTabLinLay.setOnClickListener(this);
 
             mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
         }
 
       @Override

@@ -26,11 +26,7 @@
     <color name="color_edit_box_text">#949494</color>
     <color name="color_facebook">#1976D2</color>
     <color name="color_google">#E4E4E4</color>
-
-
-
-
-
+    <color name="gray_color">#6DC0C0C0</color>
 
 
 </resources>

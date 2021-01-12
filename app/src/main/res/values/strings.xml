@@ -48,4 +48,5 @@
     <string name="resend">Resend</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="we_have_sent_you_a_verification_code_otp">We have sent you a verification Code (OTP)</string>
+    <string name="our_specialties">Our Specialties</string>
 </resources>
