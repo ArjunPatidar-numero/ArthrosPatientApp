@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doctorsAdapter"
+            type="com.numeroeins.arthros.patient.adapter.DoctorServiceAdapter" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:id="@+id/parentPanel"
+        >
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/margin_5dp"
+            android:layout_height="@dimen/margin_5dp"
+            android:layout_marginEnd="@dimen/margin_5dp"
+            android:background="@drawable/custom_red_button"
+            />
+        <TextView
+            android:id="@+id/serviceNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Some Text Here"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_14dp" />
+    </LinearLayout>
+</layout>

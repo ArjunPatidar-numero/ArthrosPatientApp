@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_top_curve_bg"
+    android:orientation="vertical"
+    app:behavior_peekHeight="400dp">
+
+    <LinearLayout
+        android:id="@+id/childListParentRelLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@android:color/transparent"
+        android:baselineAligned="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/userNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="Review"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_20dp" />
+
+            <ImageView
+                android:id="@+id/cancelImg"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@null"
+                android:padding="5dp"
+                android:src="@drawable/close_icon" />
+
+
+        </RelativeLayout>
+
+
+        <com.numeroeins.arthros.patient.utility.CustomRatingBar
+            android:id="@+id/thisRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_40dp"
+            app:halfStars="true"
+            android:layout_marginVertical="@dimen/margin_10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:maxStars="5"
+            app:starPadding="4dp" />
+        <EditText
+            android:id="@+id/rating_msg"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="start|center"
+            android:background="@drawable/edit_search_background"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="top|start"
+            android:hint="@string/write_your_review_here"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="8"
+            android:maxLength="200"
+            android:minLines="1"
+            android:textColor="@color/color_edit_box_text"
+            android:textColorHint="#727272"
+            android:textSize="@dimen/text_size_14dp" />
+
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/text_size_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/custom_red_button"
+            android:paddingVertical="@dimen/margin_10dp"
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:id="@+id/submitTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/text_size_14dp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="timeListAdapter"
+            type="com.numeroeins.arthros.patient.adapter.TimeListAdapter" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/dateLinLay"
+        android:layout_width="@dimen/standard_55"
+        android:layout_height="@dimen/height_65dp"
+        android:background="@drawable/custom_border_pri_small_capsule"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/margin_15dp"
+        android:paddingVertical="@dimen/margin_10dp"
+        android:layout_marginEnd="@dimen/margin_10dp"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/thisDay"
+            android:text="Tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:textSize="@dimen/text_size_12dp"/>
+        <TextView
+            android:id="@+id/thisDate"
+            android:textStyle="bold"
+            android:text="12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_12dp"/>
+    </LinearLayout>
+
+</layout>

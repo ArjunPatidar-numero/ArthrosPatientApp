@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="venueDetailsActivity"
+            type="com.numeroeins.arthros.patient.activity.DoctorDetailsActivity" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutBottomSheet"
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+
+        >
+        <LinearLayout
+            android:padding="@dimen/margin_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                <TextView
+                    android:id="@+id/bookTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/schedules"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14dp"/>
+            <TextView
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dates"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/color_edit_box_text"
+                android:textSize="@dimen/text_size_14dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:id="@+id/selectDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_slots"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/color_edit_box_text"
+                android:textSize="@dimen/text_size_14dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:id="@+id/bookAppointment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/custom_red_button"
+                android:paddingVertical="@dimen/margin_10dp"
+                android:layout_marginVertical="@dimen/margin_10dp"
+                android:layout_centerHorizontal="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_appointment"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/text_size_14dp"
+                    android:textColor="@color/white"
+                    android:layout_centerInParent="true"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
