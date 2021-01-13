@@ -175,7 +175,9 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
             case 3:
-
+                titleImg.setVisibility(View.GONE);
+                titleTxt.setVisibility(View.VISIBLE);
+                titleTxt.setText("Appointment");
                 appointmentsTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
@@ -193,7 +195,9 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
             case 4:
-
+                titleImg.setVisibility(View.GONE);
+                titleTxt.setVisibility(View.VISIBLE);
+                titleTxt.setText("Profile");
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
                 homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);

@@ -50,7 +50,7 @@
                     android:id="@+id/onGoingView"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorAccent"
+                    android:background="@color/transparent"
                     />
             </LinearLayout>
 
@@ -81,7 +81,7 @@
                     android:id="@+id/upcomingView"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/transparent"
                     />
             </LinearLayout>
             <LinearLayout
@@ -112,7 +112,7 @@
                     android:id="@+id/previousView"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/transparent"
                     />
 
             </LinearLayout>

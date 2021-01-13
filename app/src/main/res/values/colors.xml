@@ -10,7 +10,7 @@
     <color name="fb_Image_shadow">#374F8B</color>
     <color name="dialog_msg_text_color">#4A4A4A</color>
 
-
+    <color name="transparent">#01FFFFFF</color>
 
     <color name="color_212741">#212741</color>
     <color name="color_FF5119_20">#65FF5119</color>

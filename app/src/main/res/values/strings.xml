@@ -75,4 +75,7 @@
     <string name="ongoing">Ongoing</string>
     <string name="upcoming">Upcoming</string>
     <string name="past">Past</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="reschedule">ReSchedule</string>
 </resources>
