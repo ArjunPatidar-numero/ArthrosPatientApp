@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="doctorRatingReviewAdapter"
+            type="com.numeroeins.arthros.patient.adapter.DoctorRatingReviewAdapter" />
+    </data>
+    <LinearLayout
+        android:layout_width="@dimen/dime_200_dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:id="@+id/parentPanel"
+        android:layout_marginBottom="@dimen/margin_15dp"
+        android:layout_marginEnd="@dimen/margin_10dp"
+        android:background="@drawable/custom_card_border_semi_round"
+        android:padding="@dimen/margin_10dp"
+        >
+        <TextView
+            android:id="@+id/reviewerNameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_regular"
+            android:text="John Doe"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_size_12dp" />
+        <TextView
+            android:id="@+id/doctorSpecialityTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Thank You! I was amazed at the quality of doctor"
+            android:lines="2"
+            android:ellipsize="end"
+            android:textColor="@color/color_edit_box_text"
+            android:textSize="@dimen/text_size_12dp" />
+        <com.numeroeins.arthros.patient.utility.CustomRatingBar
+            android:id="@+id/thisRatingBar"
+            android:layout_width="@dimen/dome_150_dp"
+            android:layout_height="@dimen/height_35dp"
+            app:halfStars="true"
+            app:maxStars="5"
+            app:onlyForDisplay="true"
+            app:starPadding="2dp" />
+    </LinearLayout>
+</layout>

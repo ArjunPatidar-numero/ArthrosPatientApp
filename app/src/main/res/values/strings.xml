@@ -53,4 +53,17 @@
     <string name="view_all"><u>View All</u></string>
     <string name="no_data_available">No Data Available</string>
     <string name="about">About</string>
+    <string name="book">Book</string>
+    <string name="chat">Chat</string>
+    <string name="add_review">Add Review</string>
+    <string name="services">Services</string>
+    <string name="read_more">Read More</string>
+    <string name="rating_amp_reviews"><![CDATA[Rating & Reviews]]></string>
+    <string name="book_appointment">Book Appointment</string>
+    <string name="write_your_review_here">Write your review here...</string>
+    <string name="submit">Submit</string>
+    <string name="rating_msg">Please give rating</string>
+    <string name="schedules">Schedules</string>
+    <string name="dates">Dates</string>
+    <string name="time_slots">Time Slots</string>
 </resources>

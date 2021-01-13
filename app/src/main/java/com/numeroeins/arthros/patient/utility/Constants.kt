@@ -162,8 +162,11 @@ const val CLICK_TYPE_PARENT = "parent"
 const val CLICK_TYPE_CALL = "call"
 const val CLICK_TYPE_BOOK = "book"
 
-
-
+const val TIME_FORMAT_yyyy_MM_dd: String  = "yyyy-MM-dd"
+const val TIME_DATE_FORMAT_date: String = "dd"
+const val TIME_DATE_FORMAT_DAY: String = "EEE"
+const val TIME_DATE_FORMAT_MONTH: String = "MMM"
+const val TIME_DATE_FORMAT_date_month: String = "dd MMM"
 
 /* Contractors
 const val LOGIN_CHECK: Int = 1
