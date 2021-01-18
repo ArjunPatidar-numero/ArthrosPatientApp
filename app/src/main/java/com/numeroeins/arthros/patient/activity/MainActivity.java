@@ -1,6 +1,7 @@
 package com.numeroeins.arthros.patient.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +17,13 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.numeroeins.arthros.patient.R;
+import com.numeroeins.arthros.patient.chat.ChatActivity;
+import com.numeroeins.arthros.patient.chat.UpdateUserWorkManager;
 import com.numeroeins.arthros.patient.fragment.AppointmentFragment;
 import com.numeroeins.arthros.patient.fragment.DoctorFragment;
 import com.numeroeins.arthros.patient.fragment.HomeFragment;
@@ -327,6 +333,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
 
       @Override
       public void onClick(View view) {
+          Intent intent;
           switch (view.getId()){
               case R.id.homeTabLinLay:
                   changeTab(1);
@@ -340,25 +347,32 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
               case R.id.profileTabLinLay:
                   changeTab(4);
                   break;
-
-
-              case R.id.homeLinLay:
+                  case R.id.homeLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+                      changeTab(1);
                   break;
               case R.id.doctorLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+                  changeTab(2);
                   break;
               case R.id.appointmentLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+                  changeTab(3);
                   break;
               case R.id.profileLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+                  changeTab(4);
                   break;
               case R.id.settingLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+
+                  intent= new Intent(MainActivity.this,SettingActivity.class);
+                  startActivity(intent);
                   break;
               case R.id.notificationsLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
+                  intent= new Intent(MainActivity.this,NotificationActivity.class);
+                  startActivity(intent);
                   break;
               case R.id.logoutLinLay:
                   mViewHolder.mDuoDrawerLayout.closeDrawer();
@@ -371,6 +385,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
           }
       }
   }
+
 
 
 }

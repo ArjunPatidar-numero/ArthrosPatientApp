@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="ChatActivity"
+            type="com.numeroeins.arthros.patient.chat.ChatActivity" />
+    </data>
+
+
+    <RelativeLayout
+        android:background="@color/chat_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".chat.ChatActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottomLinLay"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/topNavBar"
+                layout="@layout/top_nav_bar_view"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chatRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    tools:itemCount="10"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="vertical"
+                    tools:listitem="@layout/adapter_chat_list"
+                    android:paddingBottom="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottomLinLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
+            android:background="@drawable/white_capsule"
+            android:orientation="horizontal">
+
+
+
+            <EditText
+                android:id="@+id/chatEdt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_10dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_back_grey_border_round"
+                android:hint="@string/type_here"
+                android:padding="@dimen/margin_10dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/grey_live"
+                android:textSize="@dimen/text_size_16dp"
+                tools:ignore="TextFields" />
+
+            <ImageView
+                android:id="@+id/sendButton"
+                android:layout_width="@dimen/margin_40dp"
+                android:layout_height="@dimen/margin_40dp"
+                android:layout_gravity="center"
+                android:padding="5dp"
+                android:layout_marginEnd="@dimen/margin_15dp"
+                android:contentDescription="@null"
+                android:src="@drawable/direct" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
+
+
+

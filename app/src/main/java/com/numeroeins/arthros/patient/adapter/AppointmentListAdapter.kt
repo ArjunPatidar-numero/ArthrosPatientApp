@@ -16,12 +16,12 @@ class AppointmentListAdapter(var activity: Context, orderList: ArrayList<String>
     : RecyclerView.Adapter<AppointmentListAdapter.ListViewHolder>() {
     private var orderList: ArrayList<String>? = null
     private var userPreference: UserPreference? = null
-    var utility: Utilities
+    var utility: Utility
 
     init {
         this.orderList = orderList
         userPreference = UserPreference.getInstance(activity)
-        utility = Utilities()
+        utility = Utility()
     }
 
 

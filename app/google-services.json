@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "29377725298",
+    "firebase_url": "https://arthros-5075a-default-rtdb.firebaseio.com",
     "project_id": "arthros-5075a",
     "storage_bucket": "arthros-5075a.appspot.com"
   },
@@ -37,6 +38,13 @@
             {
               "client_id": "29377725298-rg70005juctlprc1vggk28t0obafs9pm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "29377725298-i791fc53b4i3mrcnb4m101sfobtpf14c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.numeroeins.ArthrosPatient"
+              }
             }
           ]
         }
@@ -74,6 +82,13 @@
             {
               "client_id": "29377725298-rg70005juctlprc1vggk28t0obafs9pm.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "29377725298-i791fc53b4i3mrcnb4m101sfobtpf14c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.numeroeins.ArthrosPatient"
+              }
             }
           ]
         }

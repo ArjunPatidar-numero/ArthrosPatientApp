@@ -8,22 +8,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.numeroeins.arthros.patient.R
 import com.numeroeins.arthros.patient.activity.DoctorDetailsActivity
-import com.numeroeins.arthros.patient.activity.ServiceDetailsActivity
 import com.numeroeins.arthros.patient.adapter.DoctorsAdapter
-import com.numeroeins.arthros.patient.adapter.ImageSliderAdapter
-import com.numeroeins.arthros.patient.adapter.OurSpecialitiesAdapter
+import com.numeroeins.arthros.patient.chat.UpdateUserWorkManager
 import com.numeroeins.arthros.patient.databinding.FragmentDoctorBinding
-import com.numeroeins.arthros.patient.databinding.FragmentHomeBinding
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.utility.CLICK_TYPE_BOOK
 import com.numeroeins.arthros.patient.utility.CLICK_TYPE_CALL
 import com.numeroeins.arthros.patient.utility.CLICK_TYPE_PARENT
 import com.numeroeins.arthros.patient.utility.UserPreference
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController
-import com.smarteist.autoimageslider.SliderAnimations
 import io.reactivex.disposables.Disposable
 
 class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, DoctorsAdapter.onRecyclerViewItemClickListener{
@@ -49,14 +46,17 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
     private fun initView() {
 
 
+        val data = Data.Builder().build()
+        val mediaUploadSingleRequest = OneTimeWorkRequest.Builder(UpdateUserWorkManager::class.java).setInputData(data).build()
+        if (WorkManager.getInstance() != null) {
+            WorkManager.getInstance().enqueue(mediaUploadSingleRequest)
+        }
 
         val pullToRefresh: SwipeRefreshLayout = fragmentDoctorBinding!!.pullToRefresh
-        pullToRefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                initView() // your code
-                pullToRefresh.setRefreshing(false)
-            }
-        })
+        pullToRefresh.setOnRefreshListener {
+            initView() // your code
+            pullToRefresh.isRefreshing = false
+        }
 
 
         doctorsArrayList.add("")
@@ -75,8 +75,8 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
             fragmentDoctorBinding.noDataAvailableTxt.visibility = View.VISIBLE
         }
 
-        doctorsAdapter= DoctorsAdapter(requireActivity(),doctorsArrayList)
-        fragmentDoctorBinding.doctorRecyclerView.layoutManager =   LinearLayoutManager(activity,  LinearLayoutManager.VERTICAL, false)
+        doctorsAdapter= DoctorsAdapter(requireActivity(), doctorsArrayList)
+        fragmentDoctorBinding.doctorRecyclerView.layoutManager =   LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         fragmentDoctorBinding.doctorRecyclerView.adapter = doctorsAdapter
         doctorsAdapter.setOnItemClickListener(this)
         doctorsAdapter.notifyDataSetChanged()
@@ -106,7 +106,7 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
         TODO("Not yet implemented")
     }
 
-    override fun onDoctorsListItemClickListener(position: Int, type:String) {
+    override fun onDoctorsListItemClickListener(position: Int, type: String) {
         if(type == CLICK_TYPE_PARENT)
         {
             val intent = Intent(requireActivity(), DoctorDetailsActivity::class.java)

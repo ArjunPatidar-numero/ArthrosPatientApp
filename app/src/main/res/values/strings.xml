@@ -91,4 +91,47 @@
     <string name="date">Date</string>
     <string name="time">Time</string>
     <string name="reschedule">ReSchedule</string>
+
+    <string name="forgot_password_title">Forgot Password</string>
+    <string name="forgot_password_sub_title">Please enter your Email, you will receive an OTP on your registered phone number via SMS to reset your password.</string>
+    <string name="email_id">Email Id</string>
+    <string name="send">Send</string>
+
+    <string name="error_email_address">Please enter the email address.</string>
+    <string name="error_email_validation">Please enter valid email address.</string>
+    <string name="error_mobile_validation">Please enter mobile No.</string>
+
+    <string name="error_current_password">Please enter the current password.</string>
+    <string name="error_current_password_6_digit">Current password can not be less than 6 digit.</string>
+    <string name="error_confirm_password_6_digit">Confirm Password can not be less than 6 digit.</string>
+    <string name="error_password">Please enter the password.</string>
+    <string name="error_confirm_password">Please enter the confirm password.</string>
+    <string name="error_6_digit">Password can not be less than 6 digit.</string>
+
+    <string name="error_matches_password">Password do not matches.</string>
+
+    <string name="settings_file_name" >com.app.sample.fchat.temp</string>
+
+    <string name="verification_code">We have sent you a verification code (OTP)\nto</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="not_receive_otp">didn\'t receive the otp?</string>
+    <string name="verify_otp">Verify Otp</string>
+
+    <string name = "please_enter_otp" >Please enter otp.</string>
+    <string name = "otp_sent_successfully" >Otp Sent Successfully</string>
+    <string name = "successfully_change_password" >Successfully reset password ,please login </string>
+    <string name="change_password_title">Please enter new password to reset your password</string>
+
+    <string name="reset_password">Reset Password</string>
+
+    <string name="error_offer_status" >Offer already in process, Please wait for buyer reply.</string>
+    <string name="error_could_not_connect" >Could not connect</string>
+    <string name="type_here" >Type here...</string>
+
+
+    <string name="doctor_details">Doctor Details</string>
+
+
+
+
 </resources>

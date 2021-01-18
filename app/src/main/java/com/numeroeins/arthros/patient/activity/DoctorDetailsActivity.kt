@@ -17,13 +17,13 @@ import com.numeroeins.arthros.patient.adapter.*
 import com.numeroeins.arthros.patient.beans.DateListModel
 import com.numeroeins.arthros.patient.beans.TimeListModel
 import com.numeroeins.arthros.patient.databinding.*
-import com.numeroeins.arthros.patient.utility.CustomRatingBar
-import com.numeroeins.arthros.patient.utility.TIME_FORMAT_yyyy_MM_dd
-import com.numeroeins.arthros.patient.utility.UserPreference
+import com.numeroeins.arthros.patient.utility.*
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+
+import com.numeroeins.arthros.patient.chat.ChatActivity
 
 class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdapter.onRecyclerViewItemClickListener, TimeListAdapter.onRecyclerViewItemClickListener{
 
@@ -45,7 +45,7 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
 
     private fun init() {
 
-        activityDoctorDetailsBinding.topHeader.navTitle.text = "Doctor Details"
+        activityDoctorDetailsBinding.topHeader.navTitle.text = resources.getString(R.string.doctor_details)
         activityDoctorDetailsBinding.topHeader.backIcon.setOnClickListener(this)
         activityDoctorDetailsBinding.bookAppointment.setOnClickListener(this)
         activityDoctorDetailsBinding.bookBtn.setOnClickListener(this)
@@ -53,12 +53,10 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
         activityDoctorDetailsBinding.reviewBtn.setOnClickListener(this)
 
         val pullToRefresh: SwipeRefreshLayout = activityDoctorDetailsBinding!!.pullToRefresh
-        pullToRefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
-            override fun onRefresh() {
-                init() // your code
-                pullToRefresh.setRefreshing(false)
-            }
-        })
+        pullToRefresh.setOnRefreshListener {
+            init() // your code
+            pullToRefresh.isRefreshing = false
+        }
 
         doctorServiceArrayList.add("")
         doctorServiceArrayList.add("")
@@ -116,7 +114,11 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
                 initializeChildBottomBarBottomBar()
             }
             R.id.chatBtn -> {
-
+                val intent = Intent(this, ChatActivity::class.java)
+                intent.putExtra(PARAM_RECEIVER_ID, "1")
+                intent.putExtra(PARAM_RECEIVER_NAME,"Rahul")
+                intent.putExtra(PARAM_RECEIVER_IMAGE, "")
+                startActivity(intent)
             }
             R.id.reviewBtn -> {
                 initializeChildBottomBarBottomBar()

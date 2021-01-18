@@ -39,7 +39,7 @@ class SettingActivity : BaseActivity(), View.OnClickListener {
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
             R.id.messagesLinLay -> {
-                val intent = Intent(this, ChatActivity::class.java)
+                val intent = Intent(this, ChatUserListActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }

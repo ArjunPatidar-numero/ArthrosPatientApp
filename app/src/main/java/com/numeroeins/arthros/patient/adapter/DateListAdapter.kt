@@ -2,7 +2,6 @@ package com.numeroeins.arthros.patient.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +14,12 @@ class DateListAdapter(activity: Activity, arrayList: ArrayList<DateListModel>) :
 
     var activity: Activity
     var arrayList: ArrayList<DateListModel>
-    var utility: Utilities
+    var utility: Utility
 
     init {
         this.activity = activity
         this.arrayList = arrayList
-        utility = Utilities()
+        utility = Utility()
     }
 
 

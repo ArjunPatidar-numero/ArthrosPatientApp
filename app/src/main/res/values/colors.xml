@@ -27,6 +27,12 @@
     <color name="color_facebook">#1976D2</color>
     <color name="color_google">#E4E4E4</color>
     <color name="gray_color">#6DC0C0C0</color>
+    <color name="grey_live">#7a7171</color>
+    <color name="chat_background">#EBEBEB</color>
 
+    <color name="color_3A3837">#3A3837</color>
+
+    <color name="gradient1">#5DD6BC</color>
+    <color name="gradient2">#7EF38C</color>
 
 </resources>

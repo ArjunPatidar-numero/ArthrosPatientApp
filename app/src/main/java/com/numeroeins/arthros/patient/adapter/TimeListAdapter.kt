@@ -2,26 +2,25 @@ package com.numeroeins.arthros.patient.adapter
 
 import android.app.Activity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.numeroeins.arthros.patient.R
 import com.numeroeins.arthros.patient.beans.TimeListModel
 import com.numeroeins.arthros.patient.databinding.SelectTimeListItemBinding
-import com.numeroeins.arthros.patient.utility.Utilities
+import com.numeroeins.arthros.patient.utility.Utility
 
 
 class TimeListAdapter(activity: Activity, arrayList: ArrayList<TimeListModel>) : RecyclerView.Adapter<TimeListAdapter.ListViewHolder>() {
 
     var activity: Activity
     var arrayList: ArrayList<TimeListModel>
-    var utility: Utilities
+    var utility: Utility
 
     init {
         this.activity = activity
         this.arrayList = arrayList
-        utility = Utilities()
+        utility = Utility()
     }
 
 

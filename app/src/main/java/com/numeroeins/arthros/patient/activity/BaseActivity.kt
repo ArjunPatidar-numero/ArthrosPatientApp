@@ -174,7 +174,7 @@ open class BaseActivity : AppCompatActivity() {
             Log.d("JSON", " GETREQUEST" + gsonAsConvert.toJson(requestObject))
             when (pageName) {
 
-                UrlManager.REHAB_PACKAGE_LIST -> call = apiInterface.getRehabPackageList(jUser.accessToken)
+             /*   UrlManager.REHAB_PACKAGE_LIST -> call = apiInterface.getRehabPackageList(jUser.accessToken)
                 UrlManager.REHAB_PACKAGE_UPDATE -> call = apiInterface.getRehabPackageUpdate(jUser.accessToken,requestObject.id)
 
                 UrlManager.SELLER_DASHBOARD_PROPERTY_DETAIL -> call = apiInterface.getBuyerPropertyDetails(requestObject.id,jUser.accessToken)
@@ -215,7 +215,7 @@ open class BaseActivity : AppCompatActivity() {
                 UrlManager.ADMIN_SCA_LIST -> call = apiInterface.getAdminSCAList(jUser.accessToken)
                 UrlManager.ADMINS_LIST -> call = apiInterface.getAdminsList(jUser.accessToken)
                 UrlManager.ADMIN_ROLES_LIST -> call = apiInterface.getAdminRolesList(jUser.accessToken)
-                UrlManager.ADMIN_PERMISSION_LIST -> call = apiInterface.getAdminPermissionList(jUser.accessToken)
+                UrlManager.ADMIN_PERMISSION_LIST -> call = apiInterface.getAdminPermissionList(jUser.accessToken)*/
             }
             if (call != null) {
                 if (checkInternetConnection()) {
@@ -238,7 +238,7 @@ open class BaseActivity : AppCompatActivity() {
             val apiInterface = getClient(context)!!.create(APIInterface::class.java)
             var call: Observable<ResponseBody?>? = null
             when (pageName) {
-                UrlManager.ADD_BUYER_SCHEDULE -> call = apiInterface.addScheduleTime(jUser.accessToken,requestObject)
+             /*   UrlManager.ADD_BUYER_SCHEDULE -> call = apiInterface.addScheduleTime(jUser.accessToken,requestObject)
                 UrlManager.GET_BUYER_PROPERTY -> call = apiInterface.getBuyerProperty(jUser.accessToken)
                 UrlManager.BUYER_REGISTER -> call = apiInterface.buyerRegisterApi(requestObject)
                 UrlManager.SELLER_REGISTER -> call = apiInterface.sellerRegisterApi(requestObject)
@@ -340,7 +340,7 @@ open class BaseActivity : AppCompatActivity() {
                 UrlManager.ADMIN_DELETE -> call = apiInterface.adminDelete(requestObject.id, jUser.accessToken)
                 UrlManager.ADMIN_ROLE_ADD -> call = apiInterface.adminRolesAdd(requestObject, jUser.accessToken)
                 UrlManager.ADMIN_ROLE_DELETE -> call = apiInterface.adminRoleDelete(requestObject.id, jUser.accessToken)
-
+*/
                 else -> {
                     closeLoader()
                     showLongToast("API post case not handled")

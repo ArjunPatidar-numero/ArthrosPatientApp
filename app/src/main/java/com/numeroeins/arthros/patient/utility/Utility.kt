@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class Utilities {
+class Utility {
 
 
   fun getCurrentDateTime(): String? {
@@ -409,6 +409,19 @@ class Utilities {
     } else {
       view.background = drawable
     }
+  }
+  fun dateToTimeFormat(oldstringDate: String?): String? {
+    val p = PrettyTime(Locale.ENGLISH)
+    var isTime: String? = ""
+    try {
+      val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+      // sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+      val date = sdf.parse(oldstringDate)
+      isTime = p.format(date)
+    } catch (e: ParseException) {
+      e.printStackTrace()
+    }
+    return isTime
   }
 
 }

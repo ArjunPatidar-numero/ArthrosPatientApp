@@ -114,15 +114,16 @@
                         android:background="@drawable/custom_edit_box_pin"
                         android:gravity="center"
                         android:maxLength="1"
-                        android:imeOptions="actionNext"                        android:textColor="@color/colorPrimary"
+                        android:imeOptions="actionNext"
+                        android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/poppins_regular"
                         android:textColorHint="@color/color_edit_box_text"
                         android:inputType="number"
                         android:layout_marginHorizontal="2.5dp"
                         tools:ignore="Autofill,LabelFor,TextFields" />
 
-                    <EditText  android:textCursorDrawable="@drawable/color_cursor_black"
-
+                    <EditText
+                        android:textCursorDrawable="@drawable/color_cursor_black"
                         android:id="@+id/pinThreeEdt"
                         android:layout_height="49.8dp"
                         android:layout_width="0dp"
@@ -138,8 +139,8 @@
                         android:layout_marginHorizontal="2.5dp"
                         tools:ignore="Autofill,LabelFor,TextFields" />
 
-                    <EditText  android:textCursorDrawable="@drawable/color_cursor_black"
-
+                    <EditText
+                        android:textCursorDrawable="@drawable/color_cursor_black"
                         android:id="@+id/pinFourEdt"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -155,8 +156,8 @@
                         android:textColorHint="@color/color_edit_box_text"
                         tools:ignore="Autofill,LabelFor,TextFields" />
 
-                    <EditText  android:textCursorDrawable="@drawable/color_cursor_black"
-
+                    <EditText
+                        android:textCursorDrawable="@drawable/color_cursor_black"
                         android:id="@+id/pinFiveEdt"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -166,12 +167,14 @@
                         android:gravity="center"
                         android:maxLength="1"
                         android:layout_marginHorizontal="2.5dp"
-                        android:imeOptions="actionNext"                        android:textColor="@color/colorPrimary"
+                        android:imeOptions="actionNext"
+                        android:textColor="@color/colorPrimary"
                         android:fontFamily="@font/poppins_regular"
                         android:textColorHint="@color/color_edit_box_text"
                         tools:ignore="Autofill,LabelFor,TextFields" />
 
-                    <EditText  android:textCursorDrawable="@drawable/color_cursor_black"
+                    <EditText
+                        android:textCursorDrawable="@drawable/color_cursor_black"
                         android:id="@+id/pinSixEdt"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -188,7 +191,7 @@
 
                 </LinearLayout>
                 <TextView
-                    android:id="@+id/signUpTxt"
+                    android:id="@+id/verificationTxt"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_50dp"
                     android:layout_gravity="center"
@@ -222,7 +225,7 @@
                         tools:ignore="AllCaps,SpUsage" />
 
                     <TextView
-                        android:id="@+id/loginTxt"
+                        android:id="@+id/resendTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
