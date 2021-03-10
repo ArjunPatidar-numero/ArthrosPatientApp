@@ -32,34 +32,63 @@
                     android:contentDescription="@null"
                     android:src="@drawable/arthros_logo"   />
 
-
-                <EditText
-                    android:id="@+id/nameEdt"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_45dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_gravity="start|center"
-                    android:background="@drawable/custom_edit_box"
-                    android:gravity="start|center"
-                    android:hint="@string/name"
-                    android:importantForAutofill="no"
-                    android:inputType="textCapWords"
-                    android:maxLines="1"
-                    android:imeOptions="actionNext"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/colorPrimary"
-                    android:textColorHint="@color/color_edit_box_text"
-                    android:textCursorDrawable="@drawable/color_cursor_black"
-                    android:textSize="@dimen/text_size_15dp"
-                    tools:ignore="LabelFor,SpUsage" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1"
+                    android:layout_marginTop="30dp">
 
+                    <EditText
+                        android:id="@+id/firstNameEdt"
+                        android:layout_weight="0.5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_gravity="start|center"
+                        android:background="@drawable/custom_edit_box"
+                        android:gravity="start|center"
+                        android:hint="@string/first_name"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapWords"
+                        android:maxLines="1"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingVertical="@dimen/margin_10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/color_edit_box_text"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="@dimen/text_size_15dp"
+                        tools:ignore="LabelFor,SpUsage" />
+
+                    <EditText
+                        android:id="@+id/lastNameEdt"
+                        android:layout_weight="0.5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/height_50dp"
+                        android:background="@drawable/custom_edit_box"
+                        android:gravity="start|center"
+                        android:hint="@string/last_name"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapWords"
+                        android:maxLines="1"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingVertical="@dimen/margin_10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/color_edit_box_text"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="@dimen/text_size_15dp"
+                        tools:ignore="LabelFor,SpUsage" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/emailEdt"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_45dp"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_gravity="start|center"
                     android:background="@drawable/custom_edit_box"
                     android:gravity="start|center"
@@ -81,11 +110,11 @@
                 <EditText
                     android:id="@+id/phoneEdt"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_45dp"
+                    android:layout_height="@dimen/height_50dp"
                     android:layout_gravity="start|center"
                     android:background="@drawable/custom_edit_box"
                     android:gravity="start|center"
-                    android:hint="@string/mobile_number"
+                    android:hint="@string/phone_number"
                     android:importantForAutofill="no"
                     android:inputType="phone"
                     android:maxLines="1"
@@ -99,7 +128,6 @@
                     android:textCursorDrawable="@drawable/color_cursor_black"
                     android:textSize="@dimen/text_size_15dp"
                     tools:ignore="LabelFor,SpUsage" />
-
                 <EditText
                     android:id="@+id/passwordEdt"
                     android:layout_width="match_parent"
@@ -143,6 +171,46 @@
                     android:textCursorDrawable="@drawable/color_cursor_black"
                     android:textSize="@dimen/text_size_15dp"
                     tools:ignore="LabelFor,SpUsage" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/termConditionCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="@string/agree_to_our"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp"
+                        android:fontFamily="@font/poppins_regular"
+                        tools:ignore="AllCaps,SpUsage" />
+
+                    <TextView
+                        android:id="@+id/termConditionTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="@string/terms_conditions"
+                        android:textColor="@color/colorAccent"
+                        android:textColorHint="@color/colorAccent"
+                        android:textSize="@dimen/margin_16dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        tools:ignore="AllCaps,SpUsage" />
+
+                </LinearLayout>
 
 
 

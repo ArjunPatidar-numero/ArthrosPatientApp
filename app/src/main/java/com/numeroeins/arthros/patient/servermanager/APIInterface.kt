@@ -10,7 +10,21 @@ import retrofit2.http.*
 
 
 interface APIInterface {
-    @POST(UrlManager.FACEBOOK_LOGIN)
+
+    @POST(UrlManager.REGISTER_API)
+    @Headers(UrlManager.ACCEPT, UrlManager.CONTENT_TYPE)
+    fun registerApi(@Body body: PostRequestModel?): Observable<ResponseBody?>?
+
+    @POST(UrlManager.LOGIN_API)
+    @Headers(UrlManager.ACCEPT, UrlManager.CONTENT_TYPE)
+    fun loginApi(@Body body: PostRequestModel?): Observable<ResponseBody?>?
+
+
+    @GET(UrlManager.DOCTOR_LIST)
+    @Headers(UrlManager.ACCEPT, UrlManager.CONTENT_TYPE)
+    fun getDoctorListApi(@Header(UrlManager.TOKEN) token: String?): Observable<ResponseBody?>?
+
+    /*@POST(UrlManager.FACEBOOK_LOGIN)
     @Headers(UrlManager.ACCEPT, UrlManager.CONTENT_TYPE)
     fun social(@Path("id") id: String?,@Body body: PostRequestModel?): Observable<ResponseBody?>?
 
@@ -40,6 +54,6 @@ interface APIInterface {
 
     @POST(UrlManager.RESET_PASSWORD)
     @Headers(UrlManager.ACCEPT, UrlManager.CONTENT_TYPE)
-    fun resetForgotPassword(@Body body: PostRequestModel?): Observable<ResponseBody?>?
+    fun resetForgotPassword(@Body body: PostRequestModel?): Observable<ResponseBody?>?*/
 
 }

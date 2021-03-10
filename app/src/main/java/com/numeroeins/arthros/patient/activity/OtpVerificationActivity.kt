@@ -53,9 +53,9 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
              //   activityOtpVerificationBinding.subHeaderTxt.setText(resources.getString(R.string.verification_code) + " " +isdCode+ mobileNo)
                 val postRequestModel = PostRequestModel()
                 postRequestModel.phone = mobileNo
-                postRequestModel.isdCode =isdCode
+              //  postRequestModel.isdCode =isdCode
                 var commonModel = CommonValueModel()
-                postApiCall(applicationContext, UrlManager.SENT_OTP, postRequestModel, commonModel)
+           //     postApiCall(applicationContext, UrlManager.SENT_OTP, postRequestModel, commonModel)
             }
         }
     }
@@ -70,15 +70,15 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
                     postRequestModel.email = email
                     showLoader(resources.getString(R.string.please_wait))
                     var commonModel= CommonValueModel()
-                    postApiCall(applicationContext, UrlManager.FORGOT_PASSWORD, postRequestModel, commonModel)
+                  //  postApiCall(applicationContext, UrlManager.FORGOT_PASSWORD, postRequestModel, commonModel)
                 }else{
                     val postRequestModel = PostRequestModel()
                     postRequestModel.phone = mobileNo
-                    postRequestModel.isdCode = isdCode
+                   // postRequestModel.isdCode = isdCode
 
                     showLoader(resources.getString(R.string.please_wait))
                     var commonModel = CommonValueModel()
-                    postApiCall(applicationContext, UrlManager.SENT_OTP, postRequestModel, commonModel)
+                  //  postApiCall(applicationContext, UrlManager.SENT_OTP, postRequestModel, commonModel)
                 }
             }
 
@@ -87,7 +87,7 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
     override fun onSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
         closeLoader()
         when (apiName) {
-            UrlManager.SENT_OTP -> {
+           /* UrlManager.SENT_OTP -> {
                 val sentOtpModel: ResponseSentOtpModel? = APIClient.gsonAsConvert.fromJson(result, ResponseSentOtpModel::class.java)
                 if (sentOtpModel != null) {
                     if (sentOtpModel.status.equals(STATUS_SUCCESS)) {
@@ -116,7 +116,7 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
                         finish()
                     }
                 }
-            }
+            }*/
 
             /* UrlManager.VERIFY_OTP -> {
                  val sentOtpModel: ResponseSentOtpModel? = APIClient.gsonAsConvert.fromJson<ResponseSentOtpModel>(result, ResponseSentOtpModel::class.java)
@@ -178,12 +178,16 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
                     activityOtpVerificationBinding.pinSixEdt.text.toString()
 
             if ( comingFrom.equals(FORGOT_PASSWORD)) {
-                postRequestModel.otp = otp
+               // postRequestModel.otp = otp
                 postRequestModel.email = email
-                showLoader(resources.getString(R.string.please_wait))
+//                showLoader(resources.getString(R.string.please_wait))
+
                 var commonModel = CommonValueModel()
-                showLoader(resources.getString(R.string.please_wait))
-                postApiCall(applicationContext, UrlManager.VERIFY_OTP_FORGOT, postRequestModel, commonModel)
+
+                val intent = Intent(this, ResetPasswordActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            //    postApiCall(applicationContext, UrlManager.VERIFY_OTP_FORGOT, postRequestModel, commonModel)
             }else{
                 //  postRequestModel.otp = otp
                 //  var commonModel = CommonValueModel()

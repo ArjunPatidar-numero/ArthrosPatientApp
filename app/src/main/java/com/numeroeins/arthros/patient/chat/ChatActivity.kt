@@ -53,8 +53,8 @@ class ChatActivity : BaseActivity(), View.OnClickListener , ChatAdapter.OnChatIt
         activityChatBinding.topNavBar.backIcon.setOnClickListener(this)
 
 
-        if (!TextUtils.isEmpty(userPreference!!.user_id)) {
-            senderId = userPreference!!.user_id!!
+        if (!TextUtils.isEmpty(userPreference!!.token)) {
+            senderId = userPreference!!.token!!
         }else{
             senderId ="2"
         }
@@ -65,9 +65,9 @@ class ChatActivity : BaseActivity(), View.OnClickListener , ChatAdapter.OnChatIt
             senderName ="Amit"
         }
 
-        if (!TextUtils.isEmpty(userPreference!!.image))
+        if (!TextUtils.isEmpty(userPreference!!.imageUrl))
         {
-            senderImage = MAIN_URL + userPreference!!.image!!
+            senderImage = MAIN_URL + userPreference!!.imageUrl!!
         }else{
             senderImage =""
         }

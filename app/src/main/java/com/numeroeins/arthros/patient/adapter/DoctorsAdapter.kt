@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.beans.ResponseDoctorListModel
 import com.numeroeins.arthros.patient.databinding.OurDoctorsAdapterBinding
 import com.numeroeins.arthros.patient.databinding.OurSpecialitiesAdapterBinding
 import com.numeroeins.arthros.patient.utility.CLICK_TYPE_BOOK
@@ -14,30 +16,19 @@ import com.numeroeins.arthros.patient.utility.CLICK_TYPE_PARENT
 import com.numeroeins.arthros.patient.utility.UserPreference
 import java.util.ArrayList
 
-class DoctorsAdapter(activity: Context, orderList: ArrayList<String>)
-    : RecyclerView.Adapter<DoctorsAdapter.ListViewHolder>() {
-    var activity: Context
-    private var orderList: ArrayList<String>? = null
+class DoctorsAdapter(var activity: Context, orderList: ArrayList<ResponseDoctorListModel.Datum>) : RecyclerView.Adapter<DoctorsAdapter.ListViewHolder>() {
+    private var orderList: ArrayList<ResponseDoctorListModel.Datum>? = null
     private var userPreference: UserPreference? = null
+
     init {
-        this.activity = activity
         this.orderList = orderList
-        userPreference = UserPreference.getInstance(activity);
+        userPreference = UserPreference.getInstance(activity)
     }
 
-
-    class ListViewHolder(listBinding: OurDoctorsAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
-    {
-        var listBinding: OurDoctorsAdapterBinding
-        init {
-            this.listBinding = listBinding
-        }
-    }
+    class ListViewHolder(var listBinding: OurDoctorsAdapterBinding) : RecyclerView.ViewHolder(listBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val listBinding = DataBindingUtil.inflate<OurDoctorsAdapterBinding>(
-            LayoutInflater.from(parent.context)
-            , R.layout.our_doctors_adapter, parent, false)
+        val listBinding = DataBindingUtil.inflate<OurDoctorsAdapterBinding>(LayoutInflater.from(parent.context), R.layout.our_doctors_adapter, parent, false)
         return ListViewHolder(listBinding)
     }
 
@@ -46,19 +37,23 @@ class DoctorsAdapter(activity: Context, orderList: ArrayList<String>)
         /* holder.listBinding.countryNameTxt.text= contactList!![position].name
          holder.listBinding. countryCodeTxt.text= contactList!![position].code+" "+ contactList!![position].dialCode
          */
-        holder.listBinding.parentPanel.setOnClickListener{
+        Glide.with(activity).load( orderList!![position].user!!.imageUrl)
+                .placeholder(R.drawable.user_dummy_profile_grey)
+                .into(holder.listBinding.doctorImg)
+
+        holder.listBinding.parentPanelRelLay.setOnClickListener{
             if (mItemClickListener != null) {
-                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_PARENT);
+                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_PARENT)
             }
         }
         holder.listBinding.callBtn.setOnClickListener{
             if (mItemClickListener != null) {
-                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_CALL);
+                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_CALL)
             }
         }
         holder.listBinding.bookBtn.setOnClickListener{
             if (mItemClickListener != null) {
-                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_BOOK);
+                mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_BOOK)
             }
         }
     }

@@ -8,10 +8,13 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.beans.RegisterModel
 import com.numeroeins.arthros.patient.databinding.ActivityRegisterBinding
+import com.numeroeins.arthros.patient.servermanager.APIClient.gsonAsConvert
 import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
+import com.numeroeins.arthros.patient.utility.STATUS_SUCCESS
 
 import com.numeroeins.arthros.patient.utility.UserPreference
 import com.numeroeins.arthros.patient.utility.Validate
@@ -56,9 +59,7 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
             }
 
             R.id.signUpTxt -> {
-                val intent = Intent(this, OtpVerificationActivity::class.java)
-                startActivity(intent)
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+                checkValidation()
             }
         }
     }
@@ -66,8 +67,8 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
 
     private fun checkValidation() {
         val validate = Validate()
-        if (TextUtils.isEmpty(activityRegisterBinding.nameEdt.text.toString().trim())) {
-            showSnackBar(activityRegisterBinding.nameEdt, resources.getString(R.string.error_email_address))
+        if (TextUtils.isEmpty(activityRegisterBinding.firstNameEdt.text.toString().trim())) {
+            showSnackBar(activityRegisterBinding.firstNameEdt, resources.getString(R.string.error_email_address))
         }else if (TextUtils.isEmpty(activityRegisterBinding.emailEdt.text.toString().trim())) {
             showSnackBar(activityRegisterBinding.emailEdt, getResources().getString(R.string.error_email_address))
         } else if (!validate.isEmailValid(activityRegisterBinding.emailEdt.text.toString().trim())) {
@@ -84,16 +85,16 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
             showSnackBar(activityRegisterBinding.passwordEdt, resources.getString(R.string.error_matches_password))
         }else{
             val postRequestModel = PostRequestModel()
-            postRequestModel.fullName = activityRegisterBinding.nameEdt.text.toString().trim()
+            postRequestModel.first_name = activityRegisterBinding.firstNameEdt.text.toString().trim()
             postRequestModel.email = activityRegisterBinding.emailEdt.text.toString().trim()
-           // postRequestModel.isdCode = activityRegisterBinding.countryCodeTxt.text.toString().trim()
+            postRequestModel.gender = ""
             postRequestModel.phone =  activityRegisterBinding.phoneEdt.text.toString().trim()
             postRequestModel.device_token = deviceToken
             postRequestModel.password = activityRegisterBinding.passwordEdt.text.toString().trim()
-            postRequestModel.type = "user"
+         //   postRequestModel.type = "user"
             showLoader(resources.getString(R.string.please_wait))
             val commonModel = CommonValueModel()
-         //   postApiCall(applicationContext, UrlManager.REGISTER, postRequestModel, commonModel)
+            postApiCall(applicationContext, UrlManager.REGISTER_API, postRequestModel, commonModel)
         }
 
     }
@@ -105,11 +106,11 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
         //RegisterModel
         when (apiName) {
 
-           /* UrlManager.REGISTER -> {
+            UrlManager.REGISTER_API -> {
                 val responseLoginModel: RegisterModel? = gsonAsConvert.fromJson<RegisterModel>(result, RegisterModel::class.java)
                 if (responseLoginModel != null) {
-                    if (responseLoginModel.status.equals(STATUS_SUCCESS) && responseLoginModel.data != null) {
-                        userPreference!!.fullName = responseLoginModel.data!!.fullName
+                    if (responseLoginModel.status.equals(STATUS_SUCCESS) ) {
+                     /*   userPreference!!.fullName = responseLoginModel.data!!.fullName
                         userPreference!!.email = responseLoginModel.data!!.email
                         userPreference!!.phone = responseLoginModel.data!!.phone
                         userPreference!!.id = responseLoginModel.data!!.id
@@ -117,22 +118,20 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
                         userPreference!!.phoneVerified = responseLoginModel.data!!.phoneVerified
                         userPreference!!.type = responseLoginModel.data!!.type
                         userPreference!!.image = responseLoginModel.data!!.image
-                        userPreference!!.loginStatus = LOGIN_CHECK
-                        userPreference!!.save(this)
-                        val intent = Intent(applicationContext, DashboardActivity::class.java)
+                       // userPreference!!.loginStatus = LOGIN_CHECK
+                        userPreference!!.save(this)*/
+                      /*  val intent = Intent(applicationContext, DashboardActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                        finish()
-
-
+                        finish()*/
                     } else {
-                        showSnackBar(activityRegisterBinding.emailEdt, responseLoginModel.error)
+                        showSnackBar(activityRegisterBinding.emailEdt, responseLoginModel.data)
                     }
                 }
 
             }
-            UrlManager.COUNTRY_LIST_API -> {
+         /*   UrlManager.COUNTRY_LIST_API -> {
             val countryCodeModel: ResponseCountryCodeModel? = gsonAsConvert.fromJson(result, ResponseCountryCodeModel::class.java)
             if (countryCodeModel != null) {
                 if (countryCodeModel.status.equals(STATUS_SUCCESS) && countryCodeModel.data != null) {

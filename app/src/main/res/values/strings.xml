@@ -19,7 +19,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
-    <string name="mobile_number">Mobile Number</string>
+    <string name="phone_number">Phone Number</string>
     <string name="already_did_this">Already did this ?</string>
 
     <string name="new_to_this_experience">New to this Experience</string>
@@ -45,7 +45,6 @@
     <string name="notifications">Notifications</string>
     <string name="logout">Logout</string>
     <string name="verify_and_proceed">Verify And Proceed</string>
-    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
     <string name="resend">Resend</string>
     <string name="enter_otp">Enter OTP</string>
     <string name="we_have_sent_you_a_verification_code_otp">We have sent you a verification Code (OTP)</string>
@@ -76,7 +75,7 @@
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
     <string name="date_of_birth">Date of Birth</string>
-    <string name="gender">Gender</string>
+    <string name="gender">Select Gender</string>
     <string name="app_settings">App Settings</string>
     <string name="support">Support</string>
     <string name="about_us">About Us</string>
@@ -110,28 +109,46 @@
 
     <string name="error_matches_password">Password do not matches.</string>
 
-    <string name="settings_file_name" >com.app.sample.fchat.temp</string>
+    <string name="settings_file_name">com.app.sample.fchat.temp</string>
 
     <string name="verification_code">We have sent you a verification code (OTP)\nto</string>
     <string name="resend_code">Resend Code</string>
     <string name="not_receive_otp">didn\'t receive the otp?</string>
     <string name="verify_otp">Verify Otp</string>
 
-    <string name = "please_enter_otp" >Please enter otp.</string>
-    <string name = "otp_sent_successfully" >Otp Sent Successfully</string>
-    <string name = "successfully_change_password" >Successfully reset password ,please login </string>
+    <string name="please_enter_otp">Please enter otp.</string>
+    <string name="otp_sent_successfully">Otp Sent Successfully</string>
+    <string name="successfully_change_password">Successfully reset password ,please login </string>
     <string name="change_password_title">Please enter new password to reset your password</string>
 
     <string name="reset_password">Reset Password</string>
 
-    <string name="error_offer_status" >Offer already in process, Please wait for buyer reply.</string>
-    <string name="error_could_not_connect" >Could not connect</string>
-    <string name="type_here" >Type here...</string>
+    <string name="error_offer_status">Offer already in process, Please wait for buyer reply.</string>
+    <string name="error_could_not_connect">Could not connect</string>
+    <string name="type_here">Type here...</string>
 
 
     <string name="doctor_details">Doctor Details</string>
-
-
+    <string name="education_qualification">Education / Qualification</string>
+    <string name="total_experience">Total Experience</string>
+    <string name="describe_here">Describe here...</string>
+    <string name="schedule_calendar">Schedule calendar</string>
+    <string name="rate_review"><![CDATA[Rate & Review]]></string>
+    <string name="chats">Chats</string>
+    <string name="my_doctors">My Doctors</string>
+    <string name="didn_t_receive_otp">Did not receive OTP?</string>
+    <string name="reset_password_subtitle">Please enter new password to reset your password.</string>
+    <string name="agree_to_our">agree to our</string>
+    <string name="call">Call</string>
+    <string name="reports">Reports</string>
+    <string name="experience">Experience</string>
+    <string name="specialization">Specialization</string>
+    <string name="next">Next</string>
+    <string name="appointment_details">Appointment Details:</string>
+    <string name="booking_for_other">Booking for other</string>
+    <string name="confirm">Confirm</string>
+    <string name="thank_you">Thank You !!</string>
+    <string name="done">Done</string>
 
 
 </resources>

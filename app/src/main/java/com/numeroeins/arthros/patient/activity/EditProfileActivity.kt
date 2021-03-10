@@ -23,6 +23,7 @@ class EditProfileActivity :BaseActivity(), View.OnClickListener {
 
     private fun init() {
         activityEditProfileBinding.saveTxt.setOnClickListener(this)
+        activityEditProfileBinding.ivBtnBackProfile.setOnClickListener(this)
 
     }
     override fun onClick(view: View?) {
@@ -33,7 +34,10 @@ class EditProfileActivity :BaseActivity(), View.OnClickListener {
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
 
-
+            R.id.ivBtnBackProfile -> {
+                finish()
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+            }
         }
     }
 

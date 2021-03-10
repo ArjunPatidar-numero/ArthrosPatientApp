@@ -61,9 +61,12 @@ class ForgotActivity : BaseActivity(), View.OnClickListener {
         } else {
             val postRequestModel = PostRequestModel()
             postRequestModel.email = activityForgotPasswordBinding?.emailEdt?.text.toString().trim()
-            showLoader(resources.getString(R.string.please_wait))
+//            showLoader(resources.getString(R.string.please_wait))
+            val intent = Intent(this, OtpVerificationActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             val commonModel= CommonValueModel()
-            postApiCall(applicationContext, UrlManager.FORGOT_PASSWORD, postRequestModel, commonModel)
+           // postApiCall(applicationContext, UrlManager.FORGOT_PASSWORD, postRequestModel, commonModel)
         }
     }
 
@@ -71,7 +74,7 @@ class ForgotActivity : BaseActivity(), View.OnClickListener {
     override fun onSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
         closeLoader()
         when (apiName) {
-            UrlManager.FORGOT_PASSWORD -> {
+          //  UrlManager.FORGOT_PASSWORD -> {
                 /*val sentOtpModel: ResponseSentOtpModel? = APIClient.gsonAsConvert.fromJson<ResponseSentOtpModel>(result, ResponseSentOtpModel::class.java)
                 if (sentOtpModel != null) {
                     if (sentOtpModel.status.equals(STATUS_SUCCESS)) {
@@ -85,7 +88,7 @@ class ForgotActivity : BaseActivity(), View.OnClickListener {
                     }
                 }*/
 
-            }
+         //   }
 
         }
     }

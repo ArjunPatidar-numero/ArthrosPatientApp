@@ -42,9 +42,9 @@ class UpdateUserWorkManager(private var context: Context, workerParams: WorkerPa
                         hm[USER_CHAT_STATUS] = true
                         hm[USER_LAST_SEEN] = ""
                         ref!!.child(chatNode!!).setValue(hm)
-                        userPreference!!.firstDBUpdate = true
+//                        userPreference!!.firstDBUpdate = true
                     } else {
-                        userPreference!!.firstDBUpdate = true
+//                        userPreference!!.firstDBUpdate = true
                     }
                 }
 

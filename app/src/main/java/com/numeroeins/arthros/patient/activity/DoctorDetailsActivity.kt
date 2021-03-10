@@ -105,7 +105,7 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.backIcon -> {
-                finish()
+                finishThis()
             }
             R.id.bookAppointment -> {
                 initializeSportListBottomBar()
@@ -126,7 +126,10 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
         }
     }
 
-
+    private fun finishThis(){
+        finish()
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+    }
 
     var bottomSheetDialog: BottomSheetDialog? = null
     fun initializeChildBottomBarBottomBar() {
@@ -164,6 +167,8 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
     var timeSelected = ""
     var dateSelected = ""
     fun initializeSportListBottomBar() {
+        timeSelected=""
+        dateSelected=""
         val myDrawerView = layoutInflater.inflate(R.layout.book_appointment_bottom_sheet, null)
         val binding = BookAppointmentBottomSheetBinding.inflate(layoutInflater, myDrawerView as ViewGroup, false)
         providerbottomSheetDialog = BottomSheetDialog(this)
@@ -179,9 +184,11 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
         bookCourtBtn.setOnClickListener(View.OnClickListener {
             if (!timeSelected.isEmpty() && !dateSelected.isEmpty()) {
                 providerbottomSheetDialog.dismiss()
-                timeSelected=""
-                dateSelected=""
-
+                val intent = Intent(this, BookAnAppointmentActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }else{
+                showSnackBar(bookCourtBtn, "Please select date & time")
             }
         })
 
@@ -194,8 +201,8 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
         timeListAdapter = TimeListAdapter(this, timeArrayList)
         binding.selectTime.layoutManager = GridLayoutManager(this,4, LinearLayoutManager.VERTICAL, false)
         binding.selectTime.adapter = timeListAdapter
-        dateListAdapter.notifyDataSetChanged()
-        dateListAdapter.setOnItemClickListener(this)
+        timeListAdapter.notifyDataSetChanged()
+        timeListAdapter.setOnItemClickListener(this)
 
         providerbottomSheetDialog.show()
 

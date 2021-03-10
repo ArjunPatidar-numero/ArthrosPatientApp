@@ -6,8 +6,7 @@
         android:elevation="@dimen/dime_100dp"
         android:id="@+id/topBarRelLay"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dime_60_dp"
-        >
+        android:layout_height="@dimen/dime_60_dp">
         <ImageView
             android:id="@+id/backIcon"
             android:layout_width="30dp"
@@ -25,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
-            android:text="Arthros"
+            android:text="Doctor"
             android:textColor="@color/colorPrimary"
             android:layout_marginBottom="-6dp"
             android:layout_marginTop="-6dp"

@@ -215,7 +215,7 @@ class ParseFirebaseData(context: Context?) {
 
             }
             for (oneTemp in tempMsgList) {
-                if (UserPreference.getInstance(context!!)!!.user_id.equals(oneTemp.receiver.id)) {
+                if (UserPreference.getInstance(context!!)!!.token.equals(oneTemp.receiver.id)) {
                     /*if (oneTemp.getTimestamp().equals(String.valueOf(lastTimeStamp)) &&
                         !oneTemp.isRead()) {
                         lastChats.add(oneTemp);

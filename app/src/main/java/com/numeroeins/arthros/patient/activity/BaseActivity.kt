@@ -166,14 +166,14 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun getApiCall(context: Context?, pageName: String, requestObject: GetRequestModel, commonModel: CommonValueModel) {
-        val jUser: UserPreference = UserPreference.getInstance(context!!)!!
+        val userPreference: UserPreference = UserPreference.getInstance(context!!)!!
         try {
             val jUser: UserPreference = UserPreference.getInstance(context)!!
             val apiInterface = getClient(context)!!.create(APIInterface::class.java)
             var call: Observable<ResponseBody?>? = null
             Log.d("JSON", " GETREQUEST" + gsonAsConvert.toJson(requestObject))
             when (pageName) {
-
+                UrlManager.DOCTOR_LIST -> call = apiInterface.getDoctorListApi(jUser.token)
              /*   UrlManager.REHAB_PACKAGE_LIST -> call = apiInterface.getRehabPackageList(jUser.accessToken)
                 UrlManager.REHAB_PACKAGE_UPDATE -> call = apiInterface.getRehabPackageUpdate(jUser.accessToken,requestObject.id)
 
@@ -238,6 +238,10 @@ open class BaseActivity : AppCompatActivity() {
             val apiInterface = getClient(context)!!.create(APIInterface::class.java)
             var call: Observable<ResponseBody?>? = null
             when (pageName) {
+
+                UrlManager.REGISTER_API -> call = apiInterface.registerApi(requestObject)
+                UrlManager.LOGIN_API -> call = apiInterface.loginApi(requestObject)
+
              /*   UrlManager.ADD_BUYER_SCHEDULE -> call = apiInterface.addScheduleTime(jUser.accessToken,requestObject)
                 UrlManager.GET_BUYER_PROPERTY -> call = apiInterface.getBuyerProperty(jUser.accessToken)
                 UrlManager.BUYER_REGISTER -> call = apiInterface.buyerRegisterApi(requestObject)

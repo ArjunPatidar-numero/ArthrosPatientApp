@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="BookAnAppointmentActivity"
+            type="com.numeroeins.arthros.patient.activity.BookAnAppointmentActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/topHeader"
+            layout="@layout/top_nav_bar_view" />
+
+        <RelativeLayout
+            android:id="@+id/parentPanelRelLay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_5dp"
+            android:weightSum="10">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/doctorImg"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_below="@+id/topHeader"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:id="@+id/profileLinLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@+id/doctorImg"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_10dp">
+
+                <TextView
+                    android:id="@+id/doctorNameTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_regular"
+                    android:lines="1"
+                    android:text="Carnegie Mondover"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:text="Date: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp" />
+
+                    <TextView
+                        android:id="@+id/appointDateTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:text="15 March 2021"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:text="Timing: "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp" />
+
+                    <TextView
+                        android:id="@+id/appointTimeTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="1"
+                        android:text="12 PM"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profileLinLay"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/height_10dp"
+                    android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/appointment_details"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14dp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/nameEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_box"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:hint="@string/name"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/color_edit_box_text"
+                    android:textCursorDrawable="@drawable/color_cursor_black"
+                    android:textSize="@dimen/text_size_15dp"
+                    tools:ignore="LabelFor,SpUsage" />
+
+                <EditText
+                    android:id="@+id/phoneNumEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_50dp"
+                    android:layout_gravity="start|center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_box"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:hint="@string/phone_number"
+                    android:imeOptions="actionNext"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/color_edit_box_text"
+                    android:textCursorDrawable="@drawable/color_cursor_black"
+                    android:textSize="@dimen/text_size_15dp"
+                    tools:ignore="LabelFor,SpUsage" />
+
+                <EditText
+                    android:id="@+id/describeEdt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edit_box"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/describe_here"
+                    android:imeOptions="actionDone"
+                    android:lines="3"
+                    android:maxLength="100"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="@color/color_edit_box_text"
+                    android:textCursorDrawable="@drawable/color_cursor_black"
+                    android:textSize="@dimen/text_size_15dp"
+                    tools:ignore="LabelFor,SpUsage" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/termConditionCheck"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/booking_for_other"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/margin_14dp"
+                        android:textStyle="bold"
+                        tools:ignore="AllCaps,SpUsage" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/confirmAppointBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:background="@drawable/custom_red_button"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingHorizontal="@dimen/height_60dp"
+                    android:paddingVertical="@dimen/margin_15dp"
+                    android:text="@string/confirm"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

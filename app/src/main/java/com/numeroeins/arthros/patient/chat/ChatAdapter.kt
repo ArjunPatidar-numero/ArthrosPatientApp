@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.numeroeins.arthros.patient.R
 import com.numeroeins.arthros.patient.databinding.AdapterChatListBinding
-import com.numeroeins.arthros.patient.utility.ACCEPT_STATUS
-import com.numeroeins.arthros.patient.utility.REJECT_STATUS
 import com.numeroeins.arthros.patient.utility.UserPreference
 import com.numeroeins.arthros.patient.utility.Utility
 
@@ -32,7 +30,7 @@ class ChatAdapter(activity: Activity, var dataList: ArrayList<ChatMessagesList>)
         utility= Utility()
 
         MyApp = UserPreference.getInstance(activity)!!
-        userId = MyApp.user_id!!
+        userId = MyApp.token!!
     }
     class ListViewHolder(var listBinding: AdapterChatListBinding) : RecyclerView.ViewHolder(listBinding.root)
 
@@ -335,7 +333,7 @@ class ChatAdapter(activity: Activity, var dataList: ArrayList<ChatMessagesList>)
         this.dataList = dataList
         mContext = context
         MyApp = UserPreference.getInstance(context)!!
-        userId = MyApp.user_id!!
+        userId = MyApp.token!!
     }
 }
 

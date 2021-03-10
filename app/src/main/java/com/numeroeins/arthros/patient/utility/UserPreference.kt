@@ -37,17 +37,21 @@ class UserPreference private constructor() {
     }
 
 
-    var deviceToken: String? = ""
-    var fullName: String? = ""
-    var email: String? = ""
-    var accessToken: String? = ""
-    var id: String? = ""
-    var buyer_seller_id: String? = ""
-    var firstDBUpdate: Boolean? = false
-    var user_id: String? = "1"
-    var image: String? = ""
-    val tradesList: ArrayList<String> = ArrayList()
 
+
+
+    var departmentId: String? = ""
+    var deviceToken: String? = ""
+    var firsName: String? = ""
+    var lastName: String? = ""
+    var email: String? = ""
+    var phone: String? = ""
+    var gender: String? = ""
+    var status: String? = ""
+    var imageUrl: String? = ""
+    var fullName: String? = ""
+    var loginStatus: Int? = null
+    var token: String? = ""
 
 
 

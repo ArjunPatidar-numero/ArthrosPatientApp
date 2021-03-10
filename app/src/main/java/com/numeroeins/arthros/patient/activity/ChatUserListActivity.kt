@@ -60,10 +60,10 @@ class ChatUserListActivity :BaseActivity(), View.OnClickListener,ChatUserListAda
                 userIdArrayList.clear()
                 for (snapshot in dataSnapshot.children) {
                     val node = snapshot.key!!.split("-".toRegex()).toTypedArray()
-                    if (snapshot.key!!.contains(userPreference!!.user_id!!)) {
-                        if (node[0] == userPreference!!.user_id) {
+                    if (snapshot.key!!.contains(userPreference!!.token!!)) {
+                        if (node[0] == userPreference!!.token) {
                             userIdArrayList.add(node[1])
-                        } else if (node[1] == userPreference!!.user_id) {
+                        } else if (node[1] == userPreference!!.token) {
                             userIdArrayList.add(node[0])
                         }
                     }

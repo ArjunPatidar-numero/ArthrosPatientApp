@@ -1,5 +1,4 @@
 package com.numeroeins.arthros.patient.activity
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -14,7 +13,7 @@ import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
 import com.numeroeins.arthros.patient.utility.PARAM_USER_NAME
 import com.numeroeins.arthros.patient.utility.UserPreference
 
-class ChangePasswordActivity:BaseActivity(),View.OnClickListener {
+class ResetPasswordActivity:BaseActivity(),View.OnClickListener {
     var userName: String = ""
     private var userPreference: UserPreference? = null
     lateinit var activityChangePasswordBinding: ActivityChangePasswordBinding
@@ -22,7 +21,7 @@ class ChangePasswordActivity:BaseActivity(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityChangePasswordBinding = DataBindingUtil.setContentView(this, R.layout.activity_change_password)
+        activityChangePasswordBinding = DataBindingUtil.setContentView(this, R.layout.activity_reset_password)
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
         userPreference = UserPreference.getInstance(applicationContext)
         init()
@@ -46,6 +45,7 @@ class ChangePasswordActivity:BaseActivity(),View.OnClickListener {
         when (view?.id) {
             R.id.saveTxt -> {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
@@ -77,7 +77,7 @@ class ChangePasswordActivity:BaseActivity(),View.OnClickListener {
             postRequestModel.password = activityChangePasswordBinding?.confirmPasswordEdt?.text.toString().trim()
             showLoader(resources.getString(R.string.please_wait))
             var commonModel = CommonValueModel()
-       //     postApiCall(applicationContext, UrlManager.RESET_PASSWORD, postRequestModel, commonModel)
+            //     postApiCall(applicationContext, UrlManager.RESET_PASSWORD, postRequestModel, commonModel)
         }
     }
 

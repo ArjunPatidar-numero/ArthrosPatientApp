@@ -8,99 +8,112 @@
             name="doctorsAdapter"
             type="com.numeroeins.arthros.patient.adapter.DoctorsAdapter" />
     </data>
+
+    <RelativeLayout
+        android:id="@+id/parentPanelRelLay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_10dp"
+        android:layout_marginBottom="@dimen/margin_15dp"
+        android:background="@drawable/custom_card_border_semi_round"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin_5dp"
+        android:weightSum="10">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/doctorImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/profile" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:padding="@dimen/margin_5dp"
-            android:id="@+id/parentPanel"
-            android:layout_marginBottom="@dimen/margin_15dp"
-            android:layout_marginHorizontal="@dimen/margin_10dp"
-            android:background="@drawable/custom_card_border_semi_round"
-            >
-            <androidx.cardview.widget.CardView
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="150dp"
-                >
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-                    <ImageView
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/profile"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_centerInParent="true"
-                        android:src="@drawable/profile"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-            <LinearLayout
-                android:layout_weight="6"
-                android:layout_width="0dp"
-                android:padding="@dimen/margin_10dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/doctorNameTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Carnegie Mondover"
-                    android:lines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_14dp" />
-                <TextView
-                    android:id="@+id/doctorSpecialityTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Orthopaedics"
-                    android:lines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/text_size_12dp" />
-                <TextView
-                    android:id="@+id/doctorAddressTxt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Eastlake, Ohio, 44095"
-                    android:lines="1"
-                    android:ellipsize="end"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_12dp" />
-            </LinearLayout>
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@+id/callLinLay"
+            android:layout_toEndOf="@+id/doctorImg"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10dp">
+
+            <TextView
+                android:id="@+id/doctorNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:lines="1"
+                android:text="Carnegie Mondover"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_14dp" />
+
+            <TextView
+                android:id="@+id/doctorSpecialityTxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:lines="1"
+                android:text="Orthopaedics"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/text_size_12dp" />
+
+     <!--       <TextView
+                android:id="@+id/doctorAddressTxt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:lines="1"
+                android:text="Eastlake, Ohio, 44095"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_12dp" />-->
+
+            <com.numeroeins.arthros.patient.utility.CustomRatingBar
+                android:id="@+id/thisRatingBar"
+                android:layout_width="@dimen/dome_150_dp"
+                android:layout_height="@dimen/height_35dp"
+                app:halfStars="true"
+                android:gravity="center"
+                app:maxStars="5"
+                app:starPadding="4dp" />
+        </LinearLayout>
+
         <LinearLayout
-            android:layout_weight="2"
-            android:layout_width="0dp"
+            android:id="@+id/callLinLay"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+
+          android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/callBtn"
                 android:layout_width="@dimen/margin_20dp"
                 android:layout_height="@dimen/margin_20dp"
+                android:contentDescription="@null"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/margin_10dp"
-                android:src="@drawable/call"/>
+                android:src="@drawable/call" />
+
             <TextView
                 android:id="@+id/bookBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/poppins_regular"
-                android:text="Book"
-                android:paddingVertical="@dimen/margin_5dp"
-                android:paddingHorizontal="@dimen/margin_10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/custom_red_button"
-                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingHorizontal="@dimen/margin_15dp"
+                android:paddingVertical="@dimen/margin_5dp"
+                android:text="Book"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_12dp" />
         </LinearLayout>
-        </LinearLayout>
+    </RelativeLayout>
 </layout>

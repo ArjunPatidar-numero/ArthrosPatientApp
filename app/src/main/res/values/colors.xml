@@ -34,5 +34,5 @@
 
     <color name="gradient1">#5DD6BC</color>
     <color name="gradient2">#7EF38C</color>
-
+    <color name="darkGray">#A8A5A5</color>
 </resources>

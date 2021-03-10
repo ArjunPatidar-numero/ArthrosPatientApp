@@ -9,16 +9,14 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 import com.numeroeins.arthros.patient.R
+import com.numeroeins.arthros.patient.beans.LoginModel
 import com.numeroeins.arthros.patient.beans.RegisterModel
 import com.numeroeins.arthros.patient.databinding.ActivityLoginBinding
 import com.numeroeins.arthros.patient.servermanager.APIClient
 import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
-import com.numeroeins.arthros.patient.utility.PARAM_IS_COMING_BACK
-import com.numeroeins.arthros.patient.utility.STATUS_SUCCESS
-import com.numeroeins.arthros.patient.utility.UserPreference
-import com.numeroeins.arthros.patient.utility.Validate
+import com.numeroeins.arthros.patient.utility.*
 import io.reactivex.disposables.Disposable
 
 class LoginActivity : BaseActivity() , View.OnClickListener{
@@ -66,7 +64,9 @@ class LoginActivity : BaseActivity() , View.OnClickListener{
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.forgotPassword -> {
-
+                val intent = Intent(this, ForgotActivity::class.java)
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             }
             R.id.loginTxt -> {
               //  checkValidation()
@@ -94,11 +94,10 @@ class LoginActivity : BaseActivity() , View.OnClickListener{
             showSnackBar(activityLoginBinding.passwordEdt, resources.getString(R.string.error_6_digit))
         }else{
             val postRequestModel = PostRequestModel()
-
             postRequestModel.email = activityLoginBinding.emailEdt.text.toString().trim()
             postRequestModel.device_token = deviceToken
             postRequestModel.password = activityLoginBinding.passwordEdt.text.toString().trim()
-            postRequestModel.type = "user"
+           // postRequestModel.type = "user"
             showLoader(resources.getString(R.string.please_wait))
             val commonModel = CommonValueModel()
             postApiCall(applicationContext, UrlManager.LOGIN_API, postRequestModel, commonModel)
@@ -113,52 +112,26 @@ class LoginActivity : BaseActivity() , View.OnClickListener{
         Log.d("resultresult", result.toString())
         when (apiName) {
             UrlManager.LOGIN_API-> {
-               val responseLoginModel: RegisterModel? = APIClient.gsonAsConvert.fromJson<RegisterModel>(result, RegisterModel::class.java)
+               val responseLoginModel: LoginModel? = APIClient.gsonAsConvert.fromJson<LoginModel>(result, LoginModel::class.java)
                 if (responseLoginModel != null) {
-                    if (responseLoginModel.status.equals(STATUS_SUCCESS) && responseLoginModel.data != null) {
-                     /*   userPreference?.fullName = responseLoginModel.data!!.fullName
+                    if (responseLoginModel.status == STATUS_SUCCESS) {
+                        userPreference?.departmentId = responseLoginModel.data!!.departmentId
+                        userPreference?.deviceToken = deviceToken
+                        userPreference?.firsName = responseLoginModel.data!!.firstName
+                        userPreference?.lastName = responseLoginModel.data!!.lastName
                         userPreference?.email = responseLoginModel.data!!.email
                         userPreference?.phone = responseLoginModel.data!!.phone
-                        userPreference?.phoneVerified = responseLoginModel.data!!.phoneVerified
+                        userPreference?.gender = responseLoginModel.data!!.gender
+                        userPreference?.status = responseLoginModel.data!!.status
+                        userPreference?.imageUrl = responseLoginModel.data!!.imageUrl
+                        userPreference?.fullName = responseLoginModel.data!!.fullName
                         userPreference?.token = responseLoginModel.data!!.token
-                        userPreference?.user_id = responseLoginModel.data!!.id
-                        userPreference?.type = responseLoginModel.data!!.type
-                        userPreference?.image = responseLoginModel.data!!.image
+                        userPreference?.loginStatus = LOGIN_SESSION
                         userPreference?.save(this)
-
-
-                        if (userPreference!!.type.equals(USER_TYPE_USER)) {
-                            if(responseLoginModel.data!!.phoneVerified!!){
-                                if(responseLoginModel.data!!.subscription!=null&& responseLoginModel.data!!.subscription!!){
-                                    userPreference?.session = LOGIN_SESSION
-                                    userPreference?.save(this)
-                                    val intent = Intent(this, MainActivity::class.java)
-                                    startActivity(intent)
-                                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                                    finish()
-                                }else{
-                                    userPreference?.session = SUBSCRIBER_SESSION
-                                    userPreference?.save(this)
-                                    val intent = Intent(this, SubscriptionActivity::class.java)
-                                    startActivity(intent)
-                                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                                    finish()
-                                }
-                            }else{
-                                val intent = Intent(this, OtpVerificationActivity::class.java)
-                                startActivity(intent)
-                                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                                finish()
-                            }
-
-
-                        } else {
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-                            finish()
-                        }*/
-
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+                        finish()
                     } else {
                         showSnackBar(activityLoginBinding.emailEdt, responseLoginModel.error)
                     }

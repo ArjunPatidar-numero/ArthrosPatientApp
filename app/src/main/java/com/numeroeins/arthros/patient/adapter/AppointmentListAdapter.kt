@@ -37,17 +37,18 @@ class AppointmentListAdapter(var activity: Context, orderList: ArrayList<String>
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         holder.listBinding.rescheduleTxt.visibility= View.GONE
-        holder.listBinding.ongoingRelLay.visibility= View.GONE
+        holder.listBinding.cancelAppointIv.visibility= View.GONE
 
         when (type) {
             TYPE_ONGOING -> {
-                holder.listBinding.ongoingRelLay.visibility= View.VISIBLE
+                holder.listBinding.cancelAppointIv.visibility= View.VISIBLE
             }
             TYPE_PAST -> {
+                holder.listBinding.dayLeftTxt.visibility= View.GONE
                 holder.listBinding.rescheduleTxt.visibility= View.VISIBLE
             }
             TYPE_UPCOMING -> {
-
+                holder.listBinding.cancelAppointIv.visibility= View.VISIBLE
             }
         }
 

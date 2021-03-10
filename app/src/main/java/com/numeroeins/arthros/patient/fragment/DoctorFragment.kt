@@ -14,20 +14,23 @@ import androidx.work.WorkManager
 import com.numeroeins.arthros.patient.R
 import com.numeroeins.arthros.patient.activity.DoctorDetailsActivity
 import com.numeroeins.arthros.patient.adapter.DoctorsAdapter
+import com.numeroeins.arthros.patient.beans.RegisterModel
+import com.numeroeins.arthros.patient.beans.ResponseDoctorListModel
 import com.numeroeins.arthros.patient.chat.UpdateUserWorkManager
 import com.numeroeins.arthros.patient.databinding.FragmentDoctorBinding
+import com.numeroeins.arthros.patient.servermanager.APIClient
+import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
-import com.numeroeins.arthros.patient.utility.CLICK_TYPE_BOOK
-import com.numeroeins.arthros.patient.utility.CLICK_TYPE_CALL
-import com.numeroeins.arthros.patient.utility.CLICK_TYPE_PARENT
-import com.numeroeins.arthros.patient.utility.UserPreference
+import com.numeroeins.arthros.patient.servermanager.request.GetRequestModel
+import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
+import com.numeroeins.arthros.patient.utility.*
 import io.reactivex.disposables.Disposable
 
 class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, DoctorsAdapter.onRecyclerViewItemClickListener{
     private lateinit var fragmentDoctorBinding: FragmentDoctorBinding
     private var userPreference: UserPreference? = null
     private lateinit var doctorsAdapter: DoctorsAdapter
-    private val doctorsArrayList:ArrayList<String> = ArrayList()
+    private val doctorsArrayList:ArrayList<ResponseDoctorListModel.Datum> = ArrayList()
     companion object {
         fun newInstance(): HomeFragment {
             return HomeFragment()
@@ -58,14 +61,7 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
             pullToRefresh.isRefreshing = false
         }
 
-
-        doctorsArrayList.add("")
-        doctorsArrayList.add("")
-        doctorsArrayList.add("")
-        doctorsArrayList.add("")
-        doctorsArrayList.add("")
-
-
+        addDummyEntry()
         if(doctorsArrayList.size>0)
         {
             fragmentDoctorBinding.doctorRecyclerView.visibility = View.VISIBLE
@@ -75,23 +71,126 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
             fragmentDoctorBinding.noDataAvailableTxt.visibility = View.VISIBLE
         }
 
+
         doctorsAdapter= DoctorsAdapter(requireActivity(), doctorsArrayList)
         fragmentDoctorBinding.doctorRecyclerView.layoutManager =   LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         fragmentDoctorBinding.doctorRecyclerView.adapter = doctorsAdapter
         doctorsAdapter.setOnItemClickListener(this)
         doctorsAdapter.notifyDataSetChanged()
-
-
-
-
+        getDoctorApi()
     }
 
-    override fun onFragmentApiSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
+    private fun addDummyEntry() {
+        var responseDoctorListModelDatum: ResponseDoctorListModel.Datum? = ResponseDoctorListModel.Datum()
+        var responseDoctorListModelUser: ResponseDoctorListModel.User? = ResponseDoctorListModel.User()
 
+        responseDoctorListModelUser!!.age = "30"
+        responseDoctorListModelUser.bloodGroup = "A+"
+        responseDoctorListModelUser.cardBrand = "dgfd"
+        responseDoctorListModelUser.createdAt = "11"
+        responseDoctorListModelUser.cardLastFour = "4566"
+        responseDoctorListModelUser.departmentId = "101"
+        responseDoctorListModelUser.designation = "sfdsdfsd"
+        responseDoctorListModelUser.dob = "07/08/1995"
+        responseDoctorListModelUser.email = "sjd@kdf.com"
+        responseDoctorListModelUser.emailVerifiedAt = "sad"
+        responseDoctorListModelUser.firstName = "Arjun"
+        responseDoctorListModelUser.fullName = "Arjun Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+
+        responseDoctorListModelDatum!!.id = 1
+        responseDoctorListModelDatum.createdAt = "11"
+        responseDoctorListModelDatum.doctorDepartmentId = 101
+        responseDoctorListModelDatum.specialist = "MBBS"
+        responseDoctorListModelDatum.updatedAt = "12"
+        responseDoctorListModelDatum.userId = 107
+        responseDoctorListModelDatum.user = responseDoctorListModelUser
+
+        doctorsArrayList.add(responseDoctorListModelDatum)
+
+        responseDoctorListModelDatum = ResponseDoctorListModel.Datum()
+        responseDoctorListModelUser = ResponseDoctorListModel.User()
+        responseDoctorListModelUser!!.age = "30"
+        responseDoctorListModelUser.bloodGroup = "A+"
+        responseDoctorListModelUser.cardBrand = "dgfd"
+        responseDoctorListModelUser.createdAt = "11"
+        responseDoctorListModelUser.cardLastFour = "4566"
+        responseDoctorListModelUser.departmentId = "101"
+        responseDoctorListModelUser.designation = "sfdsdfsd"
+        responseDoctorListModelUser.dob = "07/08/1995"
+        responseDoctorListModelUser.email = "sjd@kdf.com"
+        responseDoctorListModelUser.emailVerifiedAt = "sad"
+        responseDoctorListModelUser.firstName = "Arjun"
+        responseDoctorListModelUser.fullName = "Arjun Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+
+        responseDoctorListModelDatum!!.id = 1
+        responseDoctorListModelDatum.createdAt = "11"
+        responseDoctorListModelDatum.doctorDepartmentId = 101
+        responseDoctorListModelDatum.specialist = "MBBS"
+        responseDoctorListModelDatum.updatedAt = "12"
+        responseDoctorListModelDatum.userId = 107
+        responseDoctorListModelDatum.user = responseDoctorListModelUser
+
+        doctorsArrayList.add(responseDoctorListModelDatum)
+
+        responseDoctorListModelDatum = ResponseDoctorListModel.Datum()
+        responseDoctorListModelUser = ResponseDoctorListModel.User()
+        responseDoctorListModelUser!!.age = "30"
+        responseDoctorListModelUser.bloodGroup = "A+"
+        responseDoctorListModelUser.cardBrand = "dgfd"
+        responseDoctorListModelUser.createdAt = "11"
+        responseDoctorListModelUser.cardLastFour = "4566"
+        responseDoctorListModelUser.departmentId = "101"
+        responseDoctorListModelUser.designation = "sfdsdfsd"
+        responseDoctorListModelUser.dob = "07/08/1995"
+        responseDoctorListModelUser.email = "sjd@kdf.com"
+        responseDoctorListModelUser.emailVerifiedAt = "sad"
+        responseDoctorListModelUser.firstName = "Arjun"
+        responseDoctorListModelUser.fullName = "Arjun Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+        responseDoctorListModelUser.lastName = "Patidar"
+
+        responseDoctorListModelDatum!!.id = 1
+        responseDoctorListModelDatum.createdAt = "11"
+        responseDoctorListModelDatum.doctorDepartmentId = 101
+        responseDoctorListModelDatum.specialist = "MBBS"
+        responseDoctorListModelDatum.updatedAt = "12"
+        responseDoctorListModelDatum.userId = 107
+        responseDoctorListModelDatum.user = responseDoctorListModelUser
+
+        doctorsArrayList.add(responseDoctorListModelDatum)
+    }
+
+    private fun getDoctorApi() {
+        val getRequestModel = GetRequestModel()
+        showLoader(resources.getString(R.string.please_wait))
+        val commonModel = CommonValueModel()
+        getApiCall(requireActivity(), UrlManager.DOCTOR_LIST, getRequestModel, commonModel)
+    }
+
+
+    override fun onFragmentApiSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
+        closeLoader()
+        when (apiName) {
+            UrlManager.DOCTOR_LIST-> {
+                val responseLoginModel: ResponseDoctorListModel? = APIClient.gsonAsConvert.fromJson<ResponseDoctorListModel>(result, ResponseDoctorListModel::class.java)
+                if (responseLoginModel != null) {
+                    if (responseLoginModel.status == STATUS_SUCCESS) {
+                        doctorsArrayList.addAll(responseLoginModel.data!!)
+                        doctorsAdapter.notifyDataSetChanged()
+                    }else{
+
+                    }
+                }
+            }
+        }
     }
 
     override fun onFragmentApiFailure(message: String?, apiName: String?, disposable: Disposable?) {
-
+        closeLoader()
     }
 
     override fun onReadWriteStoragePermissionAllow(medialTypes: String?) {
@@ -123,7 +222,9 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
     }
 
     private fun bookAction() {
-        TODO("Not yet implemented")
+        val intent = Intent(requireActivity(), DoctorDetailsActivity::class.java)
+        startActivity(intent)
+        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
     }
 
     private fun callAction() {

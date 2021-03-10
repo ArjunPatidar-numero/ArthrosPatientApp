@@ -6,4 +6,5 @@ class GetRequestModel {
     var tradeType : String? = ""
     var type : String? = ""
     var usertype : String? = ""
+    var token : String? = ""
 }
