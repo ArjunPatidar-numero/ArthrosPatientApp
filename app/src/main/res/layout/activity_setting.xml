@@ -28,35 +28,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginBottom="40dp"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="@dimen/height_45dp"
-                        android:src="@drawable/back_icon"
-                        android:padding="6dp"
-                        android:contentDescription="@null"
-                        android:layout_height="@dimen/height_45dp"
-                        app:tint="@color/colorPrimary" />
-
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/height_50dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="@string/settings"
-                        android:textColor="@color/colorPrimary"
-                        android:textAllCaps="false"
-                        android:textSize="@dimen/margin_18dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        tools:ignore="AllCaps,SpUsage" />
-
-                </RelativeLayout>
+                <include
+                    android:id="@+id/topHeader"
+                    layout="@layout/top_nav_bar_view" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -14,10 +14,8 @@ import com.numeroeins.arthros.patient.servermanager.APIClient.gsonAsConvert
 import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
-import com.numeroeins.arthros.patient.utility.STATUS_SUCCESS
+import com.numeroeins.arthros.patient.utility.*
 
-import com.numeroeins.arthros.patient.utility.UserPreference
-import com.numeroeins.arthros.patient.utility.Validate
 import io.reactivex.disposables.Disposable
 
 class RegisterActivity : BaseActivity(),View.OnClickListener {
@@ -92,9 +90,14 @@ class RegisterActivity : BaseActivity(),View.OnClickListener {
             postRequestModel.device_token = deviceToken
             postRequestModel.password = activityRegisterBinding.passwordEdt.text.toString().trim()
          //   postRequestModel.type = "user"
-            showLoader(resources.getString(R.string.please_wait))
-            val commonModel = CommonValueModel()
-            postApiCall(applicationContext, UrlManager.REGISTER_API, postRequestModel, commonModel)
+
+            val intent = Intent(this, OtpVerificationActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+
+//            showLoader(resources.getString(R.string.please_wait))
+//            val commonModel = CommonValueModel()
+//            postApiCall(applicationContext, UrlManager.REGISTER_API, postRequestModel, commonModel)
         }
 
     }

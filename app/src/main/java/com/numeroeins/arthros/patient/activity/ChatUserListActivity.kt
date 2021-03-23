@@ -34,12 +34,18 @@ class ChatUserListActivity :BaseActivity(), View.OnClickListener,ChatUserListAda
     }
 
     private fun init() {
-
         updateUserInDb()
+        activityChatUserListBinding.topHeader.navTitle.text = "Messages"
+        activityChatUserListBinding.topHeader.backIcon.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-
+        when(v?.id){
+            R.id.backIcon ->{
+                finish()
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+            }
+        }
     }
 
     override fun onItemClickListener(position: Int) {
@@ -117,6 +123,9 @@ class ChatUserListActivity :BaseActivity(), View.OnClickListener,ChatUserListAda
 
 
                 }
+                if (friendArrayList.size < 1){
+                    addDummyEntry()
+                }
                 getJobDetails()
             }
 
@@ -124,6 +133,33 @@ class ChatUserListActivity :BaseActivity(), View.OnClickListener,ChatUserListAda
                 showSnackBar(activityChatUserListBinding.chatRv, resources.getString(R.string.error_could_not_connect))
             }
         })
+    }
+
+    private fun addDummyEntry() {
+        var chatUserListModel = ChatUserListModel()
+
+        chatUserListModel.id = "101"
+        chatUserListModel.name = "Arjun"
+        chatUserListModel.email = "arjun@gmail.com"
+        chatUserListModel.userChatStatus = true
+        chatUserListModel.userLastSeen = "12:55 PM"
+        friendArrayList.add(chatUserListModel)
+
+        chatUserListModel = ChatUserListModel()
+        chatUserListModel.id = "102"
+        chatUserListModel.name = "Rahul"
+        chatUserListModel.email = "Rahul@gmail.com"
+        chatUserListModel.userChatStatus = false
+        chatUserListModel.userLastSeen = "12:56 PM"
+        friendArrayList.add(chatUserListModel)
+
+        chatUserListModel = ChatUserListModel()
+        chatUserListModel.id = "103"
+        chatUserListModel.name = "Ravi"
+        chatUserListModel.email = "Ravi@gmail.com"
+        chatUserListModel.userChatStatus = false
+        chatUserListModel.userLastSeen = "12:57 PM"
+        friendArrayList.add(chatUserListModel)
     }
 
     private fun getJobDetails() {

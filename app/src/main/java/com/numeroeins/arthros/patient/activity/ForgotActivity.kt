@@ -63,6 +63,8 @@ class ForgotActivity : BaseActivity(), View.OnClickListener {
             postRequestModel.email = activityForgotPasswordBinding?.emailEdt?.text.toString().trim()
 //            showLoader(resources.getString(R.string.please_wait))
             val intent = Intent(this, OtpVerificationActivity::class.java)
+            intent.putExtra(PARAM_COMING_FROM, FORGOT_PASSWORD)
+            intent.putExtra(PARAM_USER_NAME, activityForgotPasswordBinding!!.emailEdt.text.toString().trim())
             startActivity(intent)
             overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             val commonModel= CommonValueModel()

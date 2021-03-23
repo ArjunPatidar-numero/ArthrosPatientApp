@@ -197,8 +197,14 @@ class HomeFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, 
     }
 
     override fun onOurServicesListItemClickListener(position: Int) {
+/*tk_comment
         val intent = Intent(requireActivity(), ServiceDetailsActivity::class.java)
         startActivity(intent)
         requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+*/
+        val intent = Intent(requireActivity(), SpecialitiesActivity::class.java)
+        startActivity(intent)
+        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+
     }
 }

@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.numeroeins.arthros.patient.R
-import com.numeroeins.arthros.patient.activity.ChangePasswordActivity
-import com.numeroeins.arthros.patient.activity.EditProfileActivity
-import com.numeroeins.arthros.patient.activity.MainActivity
-import com.numeroeins.arthros.patient.activity.RegisterActivity
+import com.numeroeins.arthros.patient.activity.*
 import com.numeroeins.arthros.patient.databinding.FragmentProfileBinding
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.utility.UserPreference
@@ -26,8 +25,17 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        fragmentProfileBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_profile,
+            container,
+            false
+        )
         val view: View = fragmentProfileBinding.root
         setOnFragmentListener(this)
         userPreference = UserPreference.getInstance(requireActivity())
@@ -41,6 +49,8 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
         fragmentProfileBinding.editProfileLinLay.setOnClickListener(this)
         fragmentProfileBinding.changePasswordLinLay.setOnClickListener(this)
         fragmentProfileBinding.logoutLinLay.setOnClickListener(this)
+        fragmentProfileBinding.chatsLinLay.setOnClickListener(this)
+        fragmentProfileBinding.myDoctorLinLay.setOnClickListener(this)
 
     }
 
@@ -55,9 +65,20 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
                 val intent = Intent(activity, ChangePasswordActivity::class.java)
                 startActivity(intent)
                 activity!!.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-            }  R.id.logoutLinLay -> {
-            activity?.let { logOutPrompt(it) }
-        }
+            }
+            R.id.myDoctorLinLay -> {
+                val intent = Intent(activity, MyDoctorsActivity::class.java)
+                startActivity(intent)
+                activity!!.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }
+            R.id.chatsLinLay -> {
+                val intent = Intent(activity, ChatUserListActivity::class.java)
+                startActivity(intent)
+                activity!!.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+            }
+            R.id.logoutLinLay -> {
+                activity?.let { logOutPrompt(it) }
+            }
         }
     }
 
@@ -65,7 +86,12 @@ class ProfileFragment :BaseFragment(), FragmentBaseListener, View.OnClickListene
 
     }
 
-    override fun onFragmentApiSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
+    override fun onFragmentApiSuccess(
+        result: String?,
+        apiName: String?,
+        disposable: Disposable?,
+        commonModel: CommonValueModel?
+    ) {
 
     }
 

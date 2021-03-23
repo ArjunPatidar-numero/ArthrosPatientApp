@@ -41,6 +41,7 @@ class AppointmentListAdapter(var activity: Context, orderList: ArrayList<String>
 
         when (type) {
             TYPE_ONGOING -> {
+                holder.listBinding.dayLeftTxt.visibility= View.GONE
                 holder.listBinding.cancelAppointIv.visibility= View.VISIBLE
             }
             TYPE_PAST -> {

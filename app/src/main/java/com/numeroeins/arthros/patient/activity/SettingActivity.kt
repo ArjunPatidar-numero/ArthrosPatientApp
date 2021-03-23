@@ -21,6 +21,9 @@ class SettingActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun init() {
+        activitySettingBinding.topHeader.navTitle.text = resources.getText(R.string.settings)
+
+        activitySettingBinding.topHeader.backIcon.setOnClickListener(this)
         activitySettingBinding.editIconLinLay.setOnClickListener(this)
         activitySettingBinding.messagesLinLay.setOnClickListener(this)
         activitySettingBinding.notificationsLinLay.setOnClickListener(this)
@@ -33,6 +36,10 @@ class SettingActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         when (view?.id) {
+            R.id.backIcon -> {
+                finish()
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+            }
             R.id.editIconLinLay -> {
                 val intent = Intent(this, EditProfileActivity::class.java)
                 startActivity(intent)

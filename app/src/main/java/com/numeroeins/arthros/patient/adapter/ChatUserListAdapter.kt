@@ -41,14 +41,7 @@ class ChatUserListAdapter(activity: Activity, var arrayList: ArrayList<ChatUserL
             if (mItemClickListener != null) {
                 mItemClickListener?.onItemClickListener(position);
             }
-
         }
-
-
-
-
-
-
     }
 
     private var mItemClickListener: onRecyclerViewItemClickListener? = null

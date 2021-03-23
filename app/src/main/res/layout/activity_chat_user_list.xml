@@ -10,24 +10,31 @@
             type="com.numeroeins.arthros.patient.activity.ChatUserListActivity" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/chatRv"
+        <include
+            android:id="@+id/topHeader"
+            layout="@layout/top_nav_bar_view" />
+
+        <LinearLayout
+            android:layout_below="@+id/topHeader"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:itemCount="10"
-            android:paddingBottom="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_card_border_semi_round"
+            android:gravity="center"
+            android:orientation="vertical">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/adapter_chat_user_list" />
 
-            android:layout_gravity="center"
-
-            tools:listitem="@layout/adapter_chat_user_list"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

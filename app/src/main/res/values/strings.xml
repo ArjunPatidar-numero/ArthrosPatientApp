@@ -149,6 +149,10 @@
     <string name="confirm">Confirm</string>
     <string name="thank_you">Thank You !!</string>
     <string name="done">Done</string>
+    <string name="select_height">Select Height</string>
+    <string name="select_blood_group">Select Blood Group</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_gender">Select Gender</string>
 
 
 </resources>

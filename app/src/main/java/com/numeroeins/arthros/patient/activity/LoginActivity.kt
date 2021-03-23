@@ -38,7 +38,6 @@ class LoginActivity : BaseActivity() , View.OnClickListener{
 
     private fun init() {
 
-
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
                 //  Log.w(TAG, "Fetching FCM registration token failed", task.exception)

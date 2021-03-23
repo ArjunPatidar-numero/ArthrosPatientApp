@@ -7,5 +7,4 @@ class ChatUserListModel {
     var email = ""
     var userChatStatus:Boolean = false
     var userLastSeen = ""
-
 }

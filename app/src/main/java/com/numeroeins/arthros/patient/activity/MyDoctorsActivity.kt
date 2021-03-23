@@ -1,10 +1,8 @@
-package com.numeroeins.arthros.patient.fragment
+package com.numeroeins.arthros.patient.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -12,50 +10,42 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.numeroeins.arthros.patient.R
-import com.numeroeins.arthros.patient.activity.DoctorDetailsActivity
 import com.numeroeins.arthros.patient.adapter.DoctorsAdapter
-import com.numeroeins.arthros.patient.beans.RegisterModel
 import com.numeroeins.arthros.patient.beans.ResponseDoctorListModel
 import com.numeroeins.arthros.patient.chat.UpdateUserWorkManager
-import com.numeroeins.arthros.patient.databinding.FragmentDoctorBinding
-import com.numeroeins.arthros.patient.servermanager.APIClient
+import com.numeroeins.arthros.patient.databinding.ActivityMyDoctorsBinding
 import com.numeroeins.arthros.patient.servermanager.UrlManager
 import com.numeroeins.arthros.patient.servermanager.request.CommonValueModel
 import com.numeroeins.arthros.patient.servermanager.request.GetRequestModel
-import com.numeroeins.arthros.patient.servermanager.request.PostRequestModel
-import com.numeroeins.arthros.patient.utility.*
-import io.reactivex.disposables.Disposable
+import com.numeroeins.arthros.patient.utility.CLICK_TYPE_BOOK
+import com.numeroeins.arthros.patient.utility.CLICK_TYPE_CALL
+import com.numeroeins.arthros.patient.utility.CLICK_TYPE_PARENT
+import com.numeroeins.arthros.patient.utility.UserPreference
 
-class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener, DoctorsAdapter.onRecyclerViewItemClickListener{
-    private lateinit var fragmentDoctorBinding: FragmentDoctorBinding
+class MyDoctorsActivity : BaseActivity(), DoctorsAdapter.onRecyclerViewItemClickListener, View.OnClickListener {
+    
+    lateinit var activityMyDoctorsBinding: ActivityMyDoctorsBinding
     private var userPreference: UserPreference? = null
     private lateinit var doctorsAdapter: DoctorsAdapter
     private val doctorsArrayList:ArrayList<ResponseDoctorListModel.Datum> = ArrayList()
-    companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
-        }
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentDoctorBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_doctor, container, false)
-        val view: View = fragmentDoctorBinding.root
-        setOnFragmentListener(this)
-        userPreference = UserPreference.getInstance(requireActivity())
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activityMyDoctorsBinding = DataBindingUtil.setContentView(this, R.layout.activity_my_doctors)
+        userPreference = UserPreference.getInstance(this)
         initView()
-        return view
     }
 
     private fun initView() {
-
-
+        activityMyDoctorsBinding.topHeader.navTitle.text = resources.getText(R.string.my_doctors)
+        activityMyDoctorsBinding.topHeader.backIcon.setOnClickListener(this)
         val data = Data.Builder().build()
         val mediaUploadSingleRequest = OneTimeWorkRequest.Builder(UpdateUserWorkManager::class.java).setInputData(data).build()
         if (WorkManager.getInstance() != null) {
             WorkManager.getInstance().enqueue(mediaUploadSingleRequest)
         }
 
-        val pullToRefresh: SwipeRefreshLayout = fragmentDoctorBinding!!.pullToRefresh
+        val pullToRefresh: SwipeRefreshLayout = activityMyDoctorsBinding!!.pullToRefresh
         pullToRefresh.setOnRefreshListener {
             initView() // your code
             pullToRefresh.isRefreshing = false
@@ -64,87 +54,20 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
         addDummyEntry()
         if(doctorsArrayList.size>0)
         {
-            fragmentDoctorBinding.doctorRecyclerView.visibility = View.VISIBLE
-            fragmentDoctorBinding.noDataAvailableTxt.visibility = View.GONE
+            activityMyDoctorsBinding.doctorRecyclerView.visibility = View.VISIBLE
+            activityMyDoctorsBinding.noDataAvailableTxt.visibility = View.GONE
         }else{
-            fragmentDoctorBinding.doctorRecyclerView.visibility = View.GONE
-            fragmentDoctorBinding.noDataAvailableTxt.visibility = View.VISIBLE
+            activityMyDoctorsBinding.doctorRecyclerView.visibility = View.GONE
+            activityMyDoctorsBinding.noDataAvailableTxt.visibility = View.VISIBLE
         }
 
 
-        doctorsAdapter= DoctorsAdapter(requireActivity(), doctorsArrayList)
-        fragmentDoctorBinding.doctorRecyclerView.layoutManager =   LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        fragmentDoctorBinding.doctorRecyclerView.adapter = doctorsAdapter
+        doctorsAdapter= DoctorsAdapter(this, doctorsArrayList)
+        activityMyDoctorsBinding.doctorRecyclerView.layoutManager =   LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        activityMyDoctorsBinding.doctorRecyclerView.adapter = doctorsAdapter
         doctorsAdapter.setOnItemClickListener(this)
         doctorsAdapter.notifyDataSetChanged()
         getDoctorApi()
-    }
-
-    private fun getDoctorApi() {
-        val getRequestModel = GetRequestModel()
-//        showLoader(resources.getString(R.string.please_wait))
-        val commonModel = CommonValueModel()
-        getApiCall(requireActivity(), UrlManager.DOCTOR_LIST, getRequestModel, commonModel)
-    }
-
-
-    override fun onFragmentApiSuccess(result: String?, apiName: String?, disposable: Disposable?, commonModel: CommonValueModel?) {
-        closeLoader()
-        when (apiName) {
-            UrlManager.DOCTOR_LIST-> {
-                val responseLoginModel: ResponseDoctorListModel? = APIClient.gsonAsConvert.fromJson<ResponseDoctorListModel>(result, ResponseDoctorListModel::class.java)
-                if (responseLoginModel != null) {
-                    if (responseLoginModel.status == STATUS_SUCCESS) {
-                        doctorsArrayList.addAll(responseLoginModel.data!!)
-                        doctorsAdapter.notifyDataSetChanged()
-                    }else{
-
-                    }
-                }
-            }
-        }
-    }
-
-    override fun onFragmentApiFailure(message: String?, apiName: String?, disposable: Disposable?) {
-        closeLoader()
-    }
-
-    override fun onReadWriteStoragePermissionAllow(medialTypes: String?) {
-
-    }
-
-    override fun onReadWriteStoragePermissionDeny(medialTypes: String?) {
-
-    }
-
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onDoctorsListItemClickListener(position: Int, type: String) {
-        when (type) {
-            CLICK_TYPE_PARENT -> {
-                val intent = Intent(requireActivity(), DoctorDetailsActivity::class.java)
-                startActivity(intent)
-                requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-            }
-            CLICK_TYPE_BOOK -> {
-                bookAction()
-            }
-            CLICK_TYPE_CALL -> {
-                callAction()
-            }
-        }
-
-    }
-
-    private fun bookAction() {
-        val intent = Intent(requireActivity(), DoctorDetailsActivity::class.java)
-        startActivity(intent)
-        requireActivity().overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
-    }
-
-    private fun callAction() {
     }
 
     private fun addDummyEntry() {
@@ -229,5 +152,47 @@ class DoctorFragment :BaseFragment(), FragmentBaseListener, View.OnClickListener
         responseDoctorListModelDatum.user = responseDoctorListModelUser
 
         doctorsArrayList.add(responseDoctorListModelDatum)
+    }
+
+    private fun getDoctorApi() {
+        val getRequestModel = GetRequestModel()
+//        showLoader(resources.getString(R.string.please_wait))
+        val commonModel = CommonValueModel()
+        getApiCall(this, UrlManager.DOCTOR_LIST, getRequestModel, commonModel)
+    }
+
+    override fun onDoctorsListItemClickListener(position: Int, type: String) {
+        if(type == CLICK_TYPE_PARENT)
+        {
+            val intent = Intent(this, DoctorDetailsActivity::class.java)
+            startActivity(intent)
+            this.overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+        }else if(type == CLICK_TYPE_BOOK)
+        {
+            bookAction()
+        }else if(type == CLICK_TYPE_CALL)
+        {
+            callAction()
+        }
+
+    }
+
+    private fun bookAction() {
+        val intent = Intent(this, DoctorDetailsActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+    }
+
+    private fun callAction() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.backIcon -> {
+                finish()
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
     private fun init() {
         activityOtpVerificationBinding.verificationTxt.setOnClickListener(this)
         activityOtpVerificationBinding.resendTxt.setOnClickListener(this)
-
+        getBundleData()
 
     }
 
@@ -189,6 +189,10 @@ class OtpVerificationActivity : BaseActivity(), View.OnClickListener {
                 overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
             //    postApiCall(applicationContext, UrlManager.VERIFY_OTP_FORGOT, postRequestModel, commonModel)
             }else{
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
                 //  postRequestModel.otp = otp
                 //  var commonModel = CommonValueModel()
                 // showLoader(resources.getString(R.string.please_wait))

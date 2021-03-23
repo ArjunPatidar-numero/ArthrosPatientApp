@@ -1,9 +1,9 @@
 package com.numeroeins.arthros.patient.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,24 +11,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.work.Data;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.numeroeins.arthros.patient.R;
-import com.numeroeins.arthros.patient.chat.ChatActivity;
-import com.numeroeins.arthros.patient.chat.UpdateUserWorkManager;
+import com.numeroeins.arthros.patient.adapter.DrawerMenuItemListAdapter;
+import com.numeroeins.arthros.patient.beans.MenuItemModel;
 import com.numeroeins.arthros.patient.fragment.AppointmentFragment;
 import com.numeroeins.arthros.patient.fragment.DoctorFragment;
 import com.numeroeins.arthros.patient.fragment.HomeFragment;
 import com.numeroeins.arthros.patient.fragment.ProfileFragment;
-import com.numeroeins.arthros.patient.utility.Constants;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView;
 import com.numeroeins.arthros.patient.utility.customslider.widgets.DuoDrawerToggle;
@@ -38,12 +35,15 @@ import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClickListener {
+public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClickListener, DrawerMenuItemListAdapter.OnMenuItemItemClickListener {
     // private MenuAdapter mMenuAdapter;
     private ViewHolder mViewHolder;
     private TextView titleTxt;
     private ImageView titleImg;
+    private RecyclerView recyclerViewMenu;
     private ArrayList<String> mTitles = new ArrayList<>();
+    private ArrayList<MenuItemModel> menuItemModelArrayList = new ArrayList<>();
+    private DrawerMenuItemListAdapter drawerMenuItemListAdapter;
 
 
     @Override
@@ -57,6 +57,8 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
 
         titleImg = findViewById(R.id.titleImg);
         titleTxt = findViewById(R.id.titleTxt);
+        recyclerViewMenu = findViewById(R.id.menuRv);
+        setDrawerMenu();
 
         mTitles = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.menuOptions)));
         // Initialize the views
@@ -71,6 +73,66 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
         changeTab(1);
         // mMenuAdapter.setViewSelected(0, true);
         setTitle(mTitles.get(0));
+    }
+
+    private void setDrawerMenu() {
+        MenuItemModel menuItemModel;
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.home));
+        menuItemModel.setMenuIcon(R.drawable.home_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.doctors));
+        menuItemModel.setMenuIcon(R.drawable.doctors_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.appointments));
+        menuItemModel.setMenuIcon(R.drawable.appointments_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.profile));
+        menuItemModel.setMenuIcon(R.drawable.profile_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.settings));
+        menuItemModel.setMenuIcon(R.drawable.settings_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.notifications));
+        menuItemModel.setMenuIcon(R.drawable.notification_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.about_us));
+        menuItemModel.setMenuIcon(R.drawable.info_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.terms_conditions));
+        menuItemModel.setMenuIcon(R.drawable.terms_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.privacy_policies));
+        menuItemModel.setMenuIcon(R.drawable.privacy_policy);
+        menuItemModelArrayList.add(menuItemModel);
+
+        menuItemModel = new MenuItemModel();
+        menuItemModel.setMenuName(getResources().getString(R.string.logout));
+        menuItemModel.setMenuIcon(R.drawable.logout_white_icon);
+        menuItemModelArrayList.add(menuItemModel);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerViewMenu.setLayoutManager(linearLayoutManager);
+        drawerMenuItemListAdapter = new DrawerMenuItemListAdapter(this, menuItemModelArrayList);
+        recyclerViewMenu.setAdapter(drawerMenuItemListAdapter);
+        drawerMenuItemListAdapter.notifyDataSetChanged();
+        drawerMenuItemListAdapter.setOnItemClickListener(this);
     }
 
     private void handleToolbar() {
@@ -136,12 +198,11 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
     }
 
 
-
-    public void changeTab(int pos){
+    public void changeTab(int pos) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment;
-        switch (pos){
+        switch (pos) {
             case 1:
 
                 titleImg.setVisibility(View.VISIBLE);
@@ -166,7 +227,7 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 titleTxt.setVisibility(View.VISIBLE);
                 titleTxt.setText("Doctors");
                 doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
-                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
 
@@ -184,9 +245,9 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 titleImg.setVisibility(View.GONE);
                 titleTxt.setVisibility(View.VISIBLE);
                 titleTxt.setText("Appointment");
-                appointmentsTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
-                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
-                doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
 
 
@@ -205,8 +266,8 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 titleTxt.setVisibility(View.VISIBLE);
                 titleTxt.setText("Profile");
                 profileTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), android.graphics.PorterDuff.Mode.MULTIPLY);
-                homeTabImg  .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
-                doctorTabImg .setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                homeTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+                doctorTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 appointmentsTabImg.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
 
 
@@ -214,10 +275,6 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
                 setBgWithOutStrokeColor(appointmentsTabLinLayBack, ContextCompat.getColor(this, R.color.white));
                 setBgWithOutStrokeColor(doctorTabLinLayBack, ContextCompat.getColor(this, R.color.white));
                 setBgWithOutStrokeColor(homeTabLinLayBack, ContextCompat.getColor(this, R.color.white));
-
-
-
-
 
 
                 fragment = new ProfileFragment();
@@ -228,80 +285,84 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
     }
 
 
-    public  void setBgWithOutStrokeColor(RelativeLayout school, int colors) {
+    public void setBgWithOutStrokeColor(RelativeLayout school, int colors) {
         GradientDrawable bgShape = (GradientDrawable) school.getBackground();
         bgShape.setColor(colors);
         //  bgShape.setStroke(1, colors);
     }
 
-  /*  @SuppressLint("NonConstantResourceId")
+    ImageView homeTabImg, doctorTabImg, appointmentsTabImg, profileTabImg;
+    RelativeLayout homeTabLinLayBack, doctorTabLinLayBack, profileTabLinLayBack, appointmentsTabLinLayBack;
+
     @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.homeLinLay:
+    public void onMenuItemClickListener(int position) {
+        Intent intent;
+        switch (position + 1) {
+            case 1: // Home
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                changeTab(1);
+                break;
+            case 2: //Doctors
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                changeTab(2);
+                break;
+            case 3: // Appointments
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                changeTab(3);
+                break;
+            case 4: // profile
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                changeTab(4);
+                break;
+            case 5: // Setting
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+
+                intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
+            case 6: // Notification
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                intent = new Intent(MainActivity.this, NotificationActivity.class);
+                startActivity(intent);
+                break;
+            case 7: //AboutUs
+                mViewHolder.mDuoDrawerLayout.closeDrawer();
+                intent = new Intent(MainActivity.this, AboutUsActivity.class);
+                startActivity(intent);
+                break;
+            case 8: //Term & condition
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 break;
-            case R.id.doctorLinLay:
+            case 9: // Privacy Policies
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 break;
-            case R.id.appointmentLinLay:
+            case 10: // Logout
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
-                break;
-            case R.id.profileLinLay:
-                mViewHolder.mDuoDrawerLayout.closeDrawer();
-                break;
-            case R.id.settingLinLay:
-                mViewHolder.mDuoDrawerLayout.closeDrawer();
-                break;
-            case R.id.notificationsLinLay:
-                mViewHolder.mDuoDrawerLayout.closeDrawer();
-                break;
-            case R.id.logoutLinLay:
+                logOutPrompt(MainActivity.this);
                 break;
         }
 
     }
-*/
-
-    ImageView homeTabImg,doctorTabImg,appointmentsTabImg,profileTabImg;
-    RelativeLayout homeTabLinLayBack,doctorTabLinLayBack,profileTabLinLayBack,appointmentsTabLinLayBack;
 
     private class ViewHolder implements View.OnClickListener {
         private DuoDrawerLayout mDuoDrawerLayout;
         private DuoMenuView mDuoMenuView;
         private Toolbar mToolbar;
         CircleImageView venuesImg;
-        TextView nameTxt,emailTxt;
+        TextView nameTxt, emailTxt;
         ImageView closeImg;
 
-        LinearLayout homeLinLay,doctorLinLay,appointmentLinLay,profileLinLay
-                ,settingLinLay,notificationsLinLay,logoutLinLay
-                ,profileTabLinLay,appointmentsTabLinLay,homeTabLinLay,doctorTabLinLay;
+        LinearLayout profileTabLinLay, appointmentsTabLinLay, homeTabLinLay, doctorTabLinLay;
+
         ViewHolder() {
             mDuoDrawerLayout = (DuoDrawerLayout) findViewById(R.id.drawer);
             mDuoMenuView = (DuoMenuView) mDuoDrawerLayout.getMenuView();
 
-            venuesImg  = mDuoDrawerLayout.getMenuView().findViewById(R.id.venuesImg);
-            nameTxt  = mDuoDrawerLayout.getMenuView().findViewById(R.id.nameTxt);
-            emailTxt  = mDuoDrawerLayout.getMenuView().findViewById(R.id.emailTxt);
-            homeLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.homeLinLay);
-            doctorLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.doctorLinLay);
-            appointmentLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.appointmentLinLay);
-            profileLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.profileLinLay);
-
-            settingLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.settingLinLay);
-
-            notificationsLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.notificationsLinLay);
-            logoutLinLay  = mDuoDrawerLayout.getMenuView().findViewById(R.id.logoutLinLay);
+            venuesImg = mDuoDrawerLayout.getMenuView().findViewById(R.id.venuesImg);
+            nameTxt = mDuoDrawerLayout.getMenuView().findViewById(R.id.nameTxt);
+            emailTxt = mDuoDrawerLayout.getMenuView().findViewById(R.id.emailTxt);
             closeImg = mDuoDrawerLayout.getMenuView().findViewById(R.id.closeImg);
 
-            homeLinLay.setOnClickListener(this);
-            doctorLinLay.setOnClickListener(this);
-            appointmentLinLay.setOnClickListener(this);
-            profileLinLay.setOnClickListener(this);
-            settingLinLay.setOnClickListener(this);
-            notificationsLinLay.setOnClickListener(this);
-            logoutLinLay.setOnClickListener(this);
             closeImg.setOnClickListener(this);
 
             homeTabLinLay = mDuoDrawerLayout.findViewById(R.id.homeTabLinLay);
@@ -315,7 +376,6 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
             profileTabLinLayBack = mDuoDrawerLayout.findViewById(R.id.profileTabLinLayBack);
 
 
-
             homeTabImg = mDuoDrawerLayout.findViewById(R.id.homeTabImg);
             doctorTabImg = mDuoDrawerLayout.findViewById(R.id.doctorTabImg);
             appointmentsTabImg = mDuoDrawerLayout.findViewById(R.id.appointmentsTabImg);
@@ -327,65 +387,49 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
             appointmentsTabLinLay.setOnClickListener(this);
             profileTabLinLay.setOnClickListener(this);
 
-            mToolbar = (Toolbar) findViewById(R.id.toolbar);
+            mToolbar = findViewById(R.id.toolbar);
 
         }
 
-      @Override
-      public void onClick(View view) {
-          Intent intent;
-          switch (view.getId()){
-              case R.id.homeTabLinLay:
-                  changeTab(1);
-                  break;
-              case R.id.doctorTabLinLay:
-                  changeTab(2);
-                  break;
-              case R.id.appointmentsTabLinLay:
-                  changeTab(3);
-                  break;
-              case R.id.profileTabLinLay:
-                  changeTab(4);
-                  break;
-                  case R.id.homeLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                      changeTab(1);
-                  break;
-              case R.id.doctorLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  changeTab(2);
-                  break;
-              case R.id.appointmentLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  changeTab(3);
-                  break;
-              case R.id.profileLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  changeTab(4);
-                  break;
-              case R.id.settingLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.homeTabLinLay:
+                    changeTab(1);
+                    break;
+                case R.id.doctorTabLinLay:
+                    changeTab(2);
+                    break;
+                case R.id.appointmentsTabLinLay:
+                    changeTab(3);
+                    break;
+                case R.id.profileTabLinLay:
+                    changeTab(4);
+                    break;
+                case R.id.closeImg:
+                    mViewHolder.mDuoDrawerLayout.closeDrawer();
+                    break;
+            }
+        }
+    }
 
-                  intent= new Intent(MainActivity.this,SettingActivity.class);
-                  startActivity(intent);
-                  break;
-              case R.id.notificationsLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  intent= new Intent(MainActivity.this,NotificationActivity.class);
-                  startActivity(intent);
-                  break;
-              case R.id.logoutLinLay:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  logOutPrompt(MainActivity.this);
-                  break;
-              case R.id.closeImg:
-                  mViewHolder.mDuoDrawerLayout.closeDrawer();
-                  break;
+    boolean doubleBackToExitPressedOnce = false;
 
-          }
-      }
-  }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
 
+        new Handler().postDelayed(new Runnable() {
 
-
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
 }

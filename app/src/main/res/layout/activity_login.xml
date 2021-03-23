@@ -274,9 +274,7 @@
                             android:layout_height="@dimen/height_45dp"
                             android:layout_gravity="center"
                             android:gravity="center_vertical"
-
                             android:text="@string/google"
-
                             android:textColor="@color/black"
                             android:textSize="@dimen/margin_16dp"
                             android:fontFamily="@font/poppins_regular"

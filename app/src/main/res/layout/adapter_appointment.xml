@@ -21,6 +21,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight=".4"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:ellipsize="end"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start|center"
+                android:maxLines="1"
+                android:text="Doctor's Name"
+                android:textColor="@color/color_edit_box_text"
+                android:textSize="@dimen/text_size_14dp" />
+
+            <TextView
+                android:id="@+id/doctorNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="start|center"
+                android:maxLines="1"
+                android:text="Yuri Zhivago"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_14dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
 
             android:orientation="horizontal">
@@ -30,6 +63,49 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="1"
+                android:gravity="start"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:maxLines="1"
+                    android:text="Treatment For"
+                    android:textColor="@color/color_edit_box_text"
+                    android:textSize="@dimen/text_size_14dp" />
+
+                <TextView
+                    android:id="@+id/TypeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start|center"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start|center"
+                    android:maxLines="1"
+                    android:text="Orthopaedics"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size_14dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:weightSum="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="0.4"
                 android:gravity="start"
                 android:orientation="vertical">
 
@@ -60,10 +136,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_weight="1"
+                android:layout_weight="0.4"
                 android:gravity="start"
                 android:orientation="vertical">
 
@@ -87,94 +163,16 @@
                     android:fontFamily="@font/poppins_regular"
                     android:gravity="start|center"
                     android:maxLines="1"
-                    android:text="01 Jan 2021"
+                    android:text="12:00 PM"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_14dp" />
             </LinearLayout>
 
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="start|center"
-                    android:maxLines="1"
-                    android:text="Type"
-                    android:textColor="@color/color_edit_box_text"
-                    android:textSize="@dimen/text_size_14dp" />
-
-                <TextView
-                    android:id="@+id/TypeTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="start|center"
-                    android:maxLines="1"
-                    android:text="Orthopaedics"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_14dp" />
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_weight=".4"
-                android:gravity="start"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:ellipsize="end"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="start|center"
-                    android:maxLines="1"
-                    android:text="Doctor"
-                    android:textColor="@color/color_edit_box_text"
-                    android:textSize="@dimen/text_size_14dp" />
-
-                <TextView
-                    android:id="@+id/doctorNameTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start|center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="start|center"
-                    android:maxLines="1"
-                    android:text="Yuri Zhivago"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_14dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|bottom"
-                android:layout_weight=".6"
+                android:layout_weight=".2"
                 android:gravity="start|bottom"
                 android:orientation="vertical">
 

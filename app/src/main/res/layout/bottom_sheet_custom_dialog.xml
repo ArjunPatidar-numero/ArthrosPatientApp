@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="EditProfileActivity"
+            type="com.numeroeins.arthros.patient.activity.EditProfileActivity" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/layoutBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_top_curve_bg"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/margin_20dp">
+
+        <RelativeLayout
+            android:id="@+id/thisTitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp">
+
+            <TextView
+                android:id="@+id/thisTitle"
+                android:text="@string/select_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_18dp"
+                tools:ignore="RelativeOverlap" />
+
+            <TextView
+                android:id="@+id/cancelTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/cancel"
+                android:textColor="@color/color_FF5119_20"
+                android:textSize="@dimen/text_size_14dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:baselineAligned="true"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/thisRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="4"
+                tools:listitem="@layout/adapter_spinner_item" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

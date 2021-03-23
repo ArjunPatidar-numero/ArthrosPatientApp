@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="MyDoctorsActivity"
+            type="com.numeroeins.arthros.patient.activity.MyDoctorsActivity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/topHeader"
+            layout="@layout/top_nav_bar_view" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_below="@+id/topHeader"
+            android:id="@+id/pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/doctorRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="20"
+                        tools:listitem="@layout/our_doctors_adapter" />
+
+                    <TextView
+                        android:id="@+id/noDataAvailableTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="@dimen/margin_20dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center_horizontal"
+                        android:text="@string/no_data_available"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dialog_msg_text_color"
+                        android:textSize="@dimen/text_size_12dp"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </RelativeLayout>
+</layout>

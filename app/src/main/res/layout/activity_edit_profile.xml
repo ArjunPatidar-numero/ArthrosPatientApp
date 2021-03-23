@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-
         android:orientation="vertical">
 
         <androidx.core.widget.NestedScrollView
@@ -124,7 +123,6 @@
                             android:layout_height="@dimen/height_50dp"
                             android:layout_gravity="start|center"
                             android:layout_marginStart="10dp"
-
                             android:layout_weight="1"
                             android:background="@drawable/custom_edit_box"
                             android:gravity="start|center"
@@ -195,7 +193,7 @@
 
 
                     <TextView
-                        android:id="@+id/dateOfBirthTxt"
+                        android:id="@+id/dateOfBirthTv"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_gravity="start|center"
@@ -218,7 +216,7 @@
 
 
                     <TextView
-                        android:id="@+id/genderTxt"
+                        android:id="@+id/genderTv"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_gravity="start|center"
@@ -237,42 +235,17 @@
                         android:textCursorDrawable="@drawable/color_cursor_black"
                         android:textSize="@dimen/text_size_15dp"
                         tools:ignore="LabelFor,SpUsage"
-                        android:drawableEnd="@drawable/down_arrow"/>
-
-                    <EditText
-                        android:id="@+id/educationEdt"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/height_50dp"
-                        android:layout_gravity="start|center"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/custom_edit_box"
-                        android:gravity="start|center"
-                        android:hint="@string/education_qualification"
-                        android:importantForAutofill="no"
-                        android:clickable="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:maxLines="1"
-                        android:maxLength="100"
-                        android:imeOptions="actionDone"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/colorPrimary"
-                        android:textColorHint="@color/color_edit_box_text"
-                        android:textCursorDrawable="@drawable/color_cursor_black"
-                        android:textSize="@dimen/text_size_15dp"
-                        tools:ignore="LabelFor,SpUsage" />
+                        app:drawableEndCompat="@drawable/down_arrow" />
 
                     <TextView
-                        android:id="@+id/totalExperienceTxt"
+                        android:id="@+id/bloodGroupTv"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_50dp"
                         android:layout_gravity="start|center"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/custom_edit_box"
                         android:gravity="start|center"
-                        android:hint="@string/total_experience"
+                        android:hint="@string/select_blood_group"
                         android:importantForAutofill="no"
                         android:maxLines="1"
                         android:maxLength="15"
@@ -284,19 +257,43 @@
                         android:textCursorDrawable="@drawable/color_cursor_black"
                         android:textSize="@dimen/text_size_15dp"
                         tools:ignore="LabelFor,SpUsage"
-                        android:drawableEnd="@drawable/down_arrow"/>
+                        app:drawableEndCompat="@drawable/down_arrow" />
 
                     <EditText
-                        android:id="@+id/describeEdt"
+                        android:id="@+id/heightEdt"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/height_50dp"
                         android:layout_gravity="start|center"
                         android:layout_marginTop="20dp"
-                        android:lines="3"
                         android:background="@drawable/custom_edit_box"
-                        android:hint="@string/describe_here"
-                        android:maxLength="100"
-                        android:imeOptions="actionDone"
+                        android:gravity="start|center"
+                        android:hint="@string/select_height"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/color_edit_box_text"
+                        android:textCursorDrawable="@drawable/color_cursor_black"
+                        android:textSize="@dimen/text_size_15dp"
+                        tools:ignore="LabelFor,SpUsage" />
+
+                    <EditText
+                        android:id="@+id/weightEdt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_50dp"
+                        android:layout_gravity="start|center"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/custom_edit_box"
+                        android:gravity="start|center"
+                        android:hint="@string/select_height"
+                        android:inputType="numberDecimal"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:imeOptions="actionNext"
                         android:paddingStart="15dp"
                         android:paddingEnd="15dp"
                         android:fontFamily="@font/poppins_regular"
@@ -324,5 +321,19 @@
             android:textSize="@dimen/margin_18dp"
             android:fontFamily="@font/poppins_semibold"
             tools:ignore="AllCaps,SpUsage" />
+
+        <com.bruce.pickerview.LoopView
+            android:id="@+id/datePickerLooper"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_alignParentBottom="true"
+            app:canLoop="true"
+            app:centerTextColor="@color/colorPrimary"
+            app:drawItemCount="7"
+            app:initPosition="3"
+            android:visibility="gone"
+            app:lineColor="@color/colorPrimary"
+            app:textSize="21sp"
+            app:topBottomTextColor="#ffafafaf"/>
     </RelativeLayout>
 </layout>

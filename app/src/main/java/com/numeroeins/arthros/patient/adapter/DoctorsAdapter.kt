@@ -41,6 +41,8 @@ class DoctorsAdapter(var activity: Context, orderList: ArrayList<ResponseDoctorL
                 .placeholder(R.drawable.user_dummy_profile_grey)
                 .into(holder.listBinding.doctorImg)
 
+        holder.listBinding.thisRatingBar.score = 2.5f
+
         holder.listBinding.parentPanelRelLay.setOnClickListener{
             if (mItemClickListener != null) {
                 mItemClickListener?.onDoctorsListItemClickListener(position, CLICK_TYPE_PARENT)

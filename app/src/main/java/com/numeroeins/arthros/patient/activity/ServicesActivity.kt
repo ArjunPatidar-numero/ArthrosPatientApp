@@ -73,9 +73,15 @@ class ServicesActivity : BaseActivity() , View.OnClickListener, ServicesAllAdapt
     }
 
     override fun onOurServicesListItemClickListener(position: Int) {
+        val intent = Intent(this, SpecialitiesActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+
+/*tk_comment
         val intent = Intent(this, ServiceDetailsActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left)
+*/
     }
 
 

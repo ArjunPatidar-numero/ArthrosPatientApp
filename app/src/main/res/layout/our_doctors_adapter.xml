@@ -75,11 +75,12 @@
 
             <com.numeroeins.arthros.patient.utility.CustomRatingBar
                 android:id="@+id/thisRatingBar"
-                android:layout_width="@dimen/dome_150_dp"
-                android:layout_height="@dimen/height_35dp"
+                android:layout_width="130dp"
+                android:layout_height="@dimen/height_30dp"
                 app:halfStars="true"
                 android:gravity="center"
                 app:maxStars="5"
+                app:onlyForDisplay="true"
                 app:starPadding="4dp" />
         </LinearLayout>
 
