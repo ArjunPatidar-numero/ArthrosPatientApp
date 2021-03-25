@@ -26,6 +26,7 @@ import com.numeroeins.arthros.patient.fragment.AppointmentFragment;
 import com.numeroeins.arthros.patient.fragment.DoctorFragment;
 import com.numeroeins.arthros.patient.fragment.HomeFragment;
 import com.numeroeins.arthros.patient.fragment.ProfileFragment;
+import com.numeroeins.arthros.patient.utility.ConstantsKt;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoDrawerLayout;
 import com.numeroeins.arthros.patient.utility.customslider.views.DuoMenuView;
 import com.numeroeins.arthros.patient.utility.customslider.widgets.DuoDrawerToggle;
@@ -297,46 +298,48 @@ public class MainActivity extends BaseActivity implements DuoMenuView.OnMenuClic
     @Override
     public void onMenuItemClickListener(int position) {
         Intent intent;
-        switch (position + 1) {
-            case 1: // Home
+        MenuItemModel menuItemModel = menuItemModelArrayList.get(position);
+
+        switch (menuItemModel.getMenuName()) {
+            case ConstantsKt.HOME: // Home
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 changeTab(1);
                 break;
-            case 2: //Doctors
+            case ConstantsKt.DOCTORS: //Doctors
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 changeTab(2);
                 break;
-            case 3: // Appointments
+            case ConstantsKt.APPOINTMENTS: // Appointments
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 changeTab(3);
                 break;
-            case 4: // profile
+            case ConstantsKt.PROFILE: // profile
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 changeTab(4);
                 break;
-            case 5: // Setting
+            case ConstantsKt.SETTINGS: // Setting
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
 
                 intent = new Intent(MainActivity.this, SettingActivity.class);
                 startActivity(intent);
                 break;
-            case 6: // Notification
+            case ConstantsKt.NOTIFICATIONS: // Notification
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 intent = new Intent(MainActivity.this, NotificationActivity.class);
                 startActivity(intent);
                 break;
-            case 7: //AboutUs
+            case ConstantsKt.ABOUT_US: //AboutUs
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 intent = new Intent(MainActivity.this, AboutUsActivity.class);
                 startActivity(intent);
                 break;
-            case 8: //Term & condition
+            case ConstantsKt.TERMS_CONDITIONS: //Term & condition
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 break;
-            case 9: // Privacy Policies
+            case ConstantsKt.PRIVACY_POLICIES: // Privacy Policies
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 break;
-            case 10: // Logout
+            case ConstantsKt.LOGOUT: // Logout
                 mViewHolder.mDuoDrawerLayout.closeDrawer();
                 logOutPrompt(MainActivity.this);
                 break;

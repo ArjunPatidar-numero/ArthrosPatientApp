@@ -16,6 +16,7 @@ import android.os.Build
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -528,9 +529,14 @@ open class BaseActivity : AppCompatActivity() {
 
         val alert: AlertDialog = builder.create()
         alert.show()
-
     }
-
+    open fun hideKeyBoard(context: Activity) {
+        val view = context.currentFocus
+        if (view != null) {
+            val imm = context.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 }
 
 

@@ -9,29 +9,33 @@
             name="homeFragment"
             type="com.numeroeins.arthros.patient.fragment.HomeFragment" />
     </data>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/pullToRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            >
+            android:fillViewport="true">
+
             <LinearLayout
-                android:padding="@dimen/margin_20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/margin_20dp">
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/viewPagerPar"
-                    app:cardUseCompatPadding="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_20dp"
-                    app:cardCornerRadius="15dp"
+                    android:elevation="0dp"
                     android:padding="0dp"
-                    android:elevation="0dp">
+                    app:cardCornerRadius="15dp"
+                    app:cardUseCompatPadding="false">
+
                     <com.smarteist.autoimageslider.SliderView
                         android:id="@+id/imageSlider"
                         android:layout_width="match_parent"
@@ -54,102 +58,106 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    >
+                    android:layout_marginBottom="@dimen/margin_10dp">
+
                     <TextView
-                        android:text="@string/our_specialties"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
+                        android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_medium"
                         android:lines="1"
-                        android:layout_centerVertical="true"
+                        android:text="@string/our_specialties"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_14dp" />
+
                     <TextView
                         android:id="@+id/viewAllSpecialities"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:text="@string/view_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorAccent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_regular"
                         android:lines="1"
-                        android:visibility="gone"
-                        android:textSize="@dimen/text_size_12dp" />
+                        android:text="@string/view_all"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_12dp"
+                        android:visibility="gone" />
                 </RelativeLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/ourSpecialitiesRv"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="@dimen/margin_20dp"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    />
+                    android:layout_marginBottom="@dimen/margin_20dp"
+                    android:visibility="gone" />
+
                 <TextView
-                    android:layout_margin="@dimen/margin_20dp"
                     android:id="@+id/noDataAvailableTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_centerInParent="true"
-                    android:gravity="center_horizontal"
-                    android:visibility="visible"
-                    android:text="@string/no_data_available"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/margin_20dp"
                     android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_horizontal"
+                    android:text="@string/no_data_available"
                     android:textAllCaps="false"
                     android:textColor="@color/dialog_msg_text_color"
-                    android:textSize="@dimen/text_size_12dp" />
+                    android:textSize="@dimen/text_size_12dp"
+                    android:visibility="visible" />
 
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    >
+                    android:layout_marginBottom="@dimen/margin_10dp">
+
                     <TextView
-                        android:text="@string/our_services"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorPrimary"
+                        android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_medium"
                         android:lines="1"
-                        android:layout_centerVertical="true"
+                        android:text="@string/our_services"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/text_size_14dp" />
+
                     <TextView
                         android:id="@+id/viewAllServices"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentEnd="true"
-                        android:text="@string/view_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorAccent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_regular"
                         android:lines="1"
-                        android:visibility="gone"
-                        android:textSize="@dimen/text_size_12dp" />
+                        android:text="@string/view_all"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/text_size_12dp"
+                        android:visibility="gone" />
                 </RelativeLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
-                    android:paddingBottom="@dimen/height_50dp"
                     android:id="@+id/ourServicesRv"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="@dimen/margin_20dp"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    />
+                    android:layout_marginBottom="@dimen/margin_20dp"
+                    android:paddingBottom="@dimen/height_50dp"
+                    android:visibility="gone" />
+
                 <TextView
-                    android:layout_margin="@dimen/margin_20dp"
                     android:id="@+id/noDataAvailableServicesTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_centerInParent="true"
-                    android:gravity="center_horizontal"
-                    android:visibility="visible"
-                    android:text="@string/no_data_available"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/margin_20dp"
                     android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_horizontal"
+                    android:text="@string/no_data_available"
                     android:textAllCaps="false"
                     android:textColor="@color/dialog_msg_text_color"
-                    android:textSize="@dimen/text_size_12dp" />
+                    android:textSize="@dimen/text_size_12dp"
+                    android:visibility="visible" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

@@ -82,3 +82,15 @@ const val NODE_SENDER_NAME = "senderName"
 const val NODE_SENDER_PHOTO = "senderPhoto"
 const val NODE_IS_READ = "isread"
 
+//menu item
+const val HOME = "Home"
+const val DOCTORS = "Doctors"
+const val APPOINTMENTS = "Appointments"
+const val PROFILE = "Profile"
+const val SETTINGS = "Settings"
+const val NOTIFICATIONS = "Notifications"
+const val ABOUT_US = "About Us"
+const val TERMS_CONDITIONS = "Terms & Conditions"
+const val PRIVACY_POLICIES = "Privacy Policies"
+const val LOGOUT = "Logout"
+

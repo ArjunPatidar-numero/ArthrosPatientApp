@@ -24,7 +24,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.AboutUsActivity"></activity>
+        <activity android:name=".activity.AboutUsActivity" />
         <activity android:name=".activity.MyDoctorsActivity" />
         <activity
             android:name=".activity.BookAnAppointmentActivity"

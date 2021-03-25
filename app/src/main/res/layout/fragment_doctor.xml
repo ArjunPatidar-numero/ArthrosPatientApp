@@ -9,15 +9,17 @@
             name="homeFragment"
             type="com.numeroeins.arthros.patient.fragment.DoctorFragment" />
     </data>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/pullToRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            >
+            android:fillViewport="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -28,25 +30,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    tools:listitem="@layout/our_doctors_adapter"
+                    android:visibility="visible"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="20"
-                    android:visibility="gone"
-                    />
+                    tools:listitem="@layout/our_doctors_adapter" />
+
                 <TextView
-                    android:layout_margin="@dimen/margin_20dp"
                     android:id="@+id/noDataAvailableTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_centerInParent="true"
-                    android:gravity="center_horizontal"
-                    android:visibility="visible"
-                    android:text="@string/no_data_available"
+                    android:layout_margin="@dimen/margin_20dp"
                     android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center_horizontal"
+                    android:text="@string/no_data_available"
                     android:textAllCaps="false"
                     android:textColor="@color/dialog_msg_text_color"
-                    android:textSize="@dimen/text_size_12dp" />
+                    android:textSize="@dimen/text_size_12dp"
+                    android:visibility="visible" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

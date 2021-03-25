@@ -250,7 +250,6 @@ class DoctorDetailsActivity : BaseActivity(), View.OnClickListener, DateListAdap
                 timeListModel.status = true
             }
 
-
             timeArrayList.add(timeListModel)
         }
     }

@@ -57,6 +57,7 @@ class EditProfileActivity :BaseActivity(), View.OnClickListener,
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right)
             }
             R.id.dateOfBirthTv -> {
+                hideKeyBoard(this)
                 activityEditProfileBinding.datePickerLooper.visibility = View.VISIBLE
                val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 val currentDate = sdf.format(Date())
@@ -78,16 +79,18 @@ class EditProfileActivity :BaseActivity(), View.OnClickListener,
                         .colorCancel(Color.parseColor("#999999")) //color of cancel button
                         .colorConfirm(Color.parseColor("#009900")) //color of confirm button
                         .minYear(1950) //min year in loop
-                        .maxYear(2550) // max year in loop
+                        .maxYear(2021) // max year in loop
                         .dateChose(currentDate) // date chose when init popwindow
                         .build()
                 pickerPopWin.showPopWin(this)
             }
             R.id.genderTv -> {
+                hideKeyBoard(this)
                 type = genderType
                 initializeSpinnerItemBottomBar(type)
             }
             R.id.bloodGroupTv -> {
+                hideKeyBoard(this)
                 type = bloodType
                 initializeSpinnerItemBottomBar(type)
             }
